@@ -17,6 +17,10 @@ public class DestroyBalls : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        Destroy(collision.gameObject);
+        if(transform.position.y >= 3.5) return;
+        if(transform.position.y > 0.5) {
+            GameObject.Find("ScriptObject").GetComponent<Gamelogic>().score += 10;
+        }
+        Destroy(this.gameObject);
     }
 }
