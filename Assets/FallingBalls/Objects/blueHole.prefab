@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5399757114891820534}
   - component: {fileID: 1272347888912865654}
   m_Layer: 0
-  m_Name: blueHole 1
+  m_Name: blueHole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,6 +21,8 @@ public class Gamelogic : MonoBehaviour
         public int spawnCount;
         public float time;
         public float wait;
+        public int minWait;
+        public int maxWait;
     }
 
     // Start is called before the first frame update
@@ -34,15 +36,32 @@ public class Gamelogic : MonoBehaviour
 
         System.Random random = new System.Random();
         for(int i = 0; i < cHoles; i++) {
-            double posx = random.NextDouble()*3.6;
-            double posz = random.NextDouble()*3.6;
-            int color = random.Next(3);
-            spawnPoints[i].hole = Instantiate(holes[color], new Vector3(top.transform.position.x+((float)posx-1.8f), top.transform.position.y-0.41f, top.transform.position.z+((float)posz-1.8f)), Quaternion.identity);
-            spawnPoints[i].color = color;
-            spawnPoints[i].spawnCount = level * 10;
-            spawnPoints[i].time =  Time.time;
-            spawnPoints[i].wait = random.Next(8)+2;
-            Instantiate(holes[color], new Vector3(floor.transform.position.x+((float)posx-1.8f), floor.transform.position.y+0.41f, floor.transform.position.z+((float)posz-1.8f)), Quaternion.identity);
+            double posx = random.NextDouble()*3.58;
+            double posz = random.NextDouble()*3.58;
+            bool overlap = false;
+            for(int j = 0;  j < i; j++) {
+                if((float)posx <= spawnPoints[j].hole.transform.position.x+0.41f && (float)posx >= spawnPoints[j].hole.transform.position.x-0.41f && 
+                (float)posz >= spawnPoints[j].hole.transform.position.z-0.41f && (float)posz <= spawnPoints[j].hole.transform.position.z+0.41f) {
+                    spawnPoints[j].spawnCount +=  level * 3 + 5;
+                    if(spawnPoints[j].maxWait > spawnPoints[j].minWait+2)
+                        spawnPoints[j].maxWait -= 1;
+                    spawnPoints[j].wait = random.Next(spawnPoints[i].maxWait-spawnPoints[i].minWait)+spawnPoints[i].minWait;
+                    overlap = true;
+                    cHoles -= 1;
+                    break;
+                }
+            }
+            if(!overlap){
+                int color = random.Next(3);
+                spawnPoints[i].hole = Instantiate(holes[color], new Vector3(top.transform.position.x+((float)posx-1.79f), top.transform.position.y-0.41f, top.transform.position.z+((float)posz-1.79f)), Quaternion.identity);
+                spawnPoints[i].color = color;
+                spawnPoints[i].spawnCount = level * 3 + 5;
+                spawnPoints[i].time =  Time.time;
+                spawnPoints[i].minWait = 2;
+                spawnPoints[i].maxWait = 10;
+                spawnPoints[i].wait = random.Next(spawnPoints[i].maxWait-spawnPoints[i].minWait)+spawnPoints[i].minWait;
+                Instantiate(holes[color], new Vector3(floor.transform.position.x+((float)posx-1.79f), floor.transform.position.y+0.41f, floor.transform.position.z+((float)posz-1.79f)), Quaternion.identity);
+            }
         }
     }
 
@@ -57,7 +76,7 @@ public class Gamelogic : MonoBehaviour
                     Instantiate(balls[spawnPoints[i].color], spawnPoints[i].hole.transform.position, Quaternion.identity);
                     spawnPoints[i].time =  Time.time;
                     System.Random random = new System.Random();
-                    spawnPoints[i].wait = random.Next(8)+2;
+                    spawnPoints[i].wait = random.Next(spawnPoints[i].maxWait-spawnPoints[i].minWait)+spawnPoints[i].minWait;
                     spawnPoints[i].spawnCount--;
                 }
             }
