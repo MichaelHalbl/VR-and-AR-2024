@@ -338,11 +338,15 @@ MonoBehaviour:
   - {fileID: 5631104498131823554, guid: 38d85513655f7a84fad2bb27355a8e93, type: 3}
   - {fileID: 5631104498131823554, guid: 6e3302169975aa6419752eec1698052f, type: 3}
   - {fileID: 5631104498131823554, guid: 77097afa47e34864996e3effe97dcd01, type: 3}
+  - {fileID: 1196744780447740, guid: 410023cb29106f349a8e12c730920dff, type: 3}
+  - {fileID: 1196744780447740, guid: 985d5ebe47e892845bc87ab56591da43, type: 3}
+  - {fileID: 1196744780447740, guid: 17ca05b2268f24842a75a6bdfeeb48fa, type: 3}
   floor: {fileID: 816199414}
   top: {fileID: 41222292}
   level: 1
   score: 0
   highscore: 0
+  pointsToWin: 0
 --- !u!1001 &50231173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1170,7 +1174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.278
+      value: 0.126
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalRotation.w

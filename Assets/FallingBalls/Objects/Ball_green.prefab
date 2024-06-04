@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1235939667478019567}
   - component: {fileID: 3432758899882684844}
   - component: {fileID: 53343475302198140}
-  - component: {fileID: -6284842168518248615}
+  - component: {fileID: 5953234418784438072}
   m_Layer: 0
   m_Name: Ball_green
   m_TagString: Untagged
@@ -116,7 +116,7 @@ Rigidbody:
   m_GameObject: {fileID: 5631104498131823554}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 5
+  m_Drag: 4
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-6284842168518248615
+--- !u!114 &5953234418784438072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,6 +143,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5631104498131823554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4944cb90b4cd64543bc4fb5396d8bfdc, type: 3}
+  m_Script: {fileID: 11500000, guid: 86f48a8b0d13011438531a82f2d5cd17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
