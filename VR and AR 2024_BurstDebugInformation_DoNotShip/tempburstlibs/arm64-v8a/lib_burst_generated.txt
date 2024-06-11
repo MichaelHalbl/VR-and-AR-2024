@@ -26,7 +26,6 @@ Library: C:\VRAr\VR-and-AR-2024\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_bur
 --assembly-defines=Unity.RenderPipelines.HighDefinition.Config.Runtime;
 --assembly-defines=Unity.RenderPipelines.HighDefinition.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
---assembly-defines=Unity.TerrainTools;
 --assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.Timeline;
 --assembly-defines=Unity.VisualEffectGraph.Runtime;
@@ -146,7 +145,6 @@ Library: C:\VRAr\VR-and-AR-2024\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_bur
 --assembly-defines=Unity.RenderPipelines.HighDefinition.Config.Runtime;
 --assembly-defines=Unity.RenderPipelines.HighDefinition.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
---assembly-defines=Unity.TerrainTools;
 --assembly-defines=Unity.TextMeshPro;
 --assembly-defines=Unity.Timeline;
 --assembly-defines=Unity.VisualEffectGraph.Runtime;
