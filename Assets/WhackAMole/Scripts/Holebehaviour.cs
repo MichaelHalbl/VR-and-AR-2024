@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Holebehaviour : MonoBehaviour
 {
-    public GameObject [] Moles;
+    public GameObject [] moles;
     void Start()
     {
-       // Invoke("Spawn", 2f); 
-        Debug.Log("Init Moles length: " + Moles.Length);
+        Invoke("Spawn", 2f); 
     }
 
     // Update is called once per frame
@@ -19,18 +18,9 @@ public class Holebehaviour : MonoBehaviour
 
     void Spawn()
     {
-        if (Moles.Length > 0)
-    {
-        int randomIndex = Random.Range(0, Moles.Length);
-        Debug.Log("Random index: " + randomIndex);
-        Debug.Log("Moles length: " + Moles.Length);
-        GameObject mole = Instantiate(Moles[randomIndex], transform.position, Quaternion.identity) as GameObject;
-        Invoke("Spawn", Random.Range(2f, 5f));
-    }
-    else
-    {
-        Debug.Log("Moles array is empty");
-    }
+        int randomIndex = Random.Range(0, moles.Length);
+        GameObject mole = Instantiate(moles[randomIndex], transform.position, Quaternion.identity) as GameObject;
+        Invoke("Spawn", Random.Range(3f, 7f));
     }
 
     void OnMouseDown()
