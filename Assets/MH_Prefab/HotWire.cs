@@ -28,7 +28,7 @@ public class HotWire : MonoBehaviour
     public void OnHandleCollisionEnter()
     {
         PlaySound();
-        UpdateScore(-10);
+        UpdateScore(-10, true);
         isTouchingWire = true;
         Debug.Log("Collision with WireHandle started.");
     }
@@ -47,10 +47,14 @@ public class HotWire : MonoBehaviour
         }
     }
 
-    private void UpdateScore(int points)
+    private void UpdateScore(int points, bool isPenalty = false)
     {
         score += points;
         Debug.Log("Current Score: " + score);
+        if (isPenalty)
+        {
+            Debug.Log("Penalty Points: " + points);
+        }
     }
 
     private void CheckForPoints()
