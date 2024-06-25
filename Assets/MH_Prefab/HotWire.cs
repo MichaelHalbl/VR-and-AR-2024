@@ -4,8 +4,6 @@ public class HotWire : MonoBehaviour
 {
     private CapsuleCollider[] colliders;
     private AudioSource audioSource;
-
-    // Punktzahlverwaltung
     private int score = 0;
     private float lastScoreTime = 0;
     private bool isTouchingWire = false;
@@ -27,25 +25,21 @@ public class HotWire : MonoBehaviour
         CheckForPoints();
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void OnHandleCollisionEnter()
     {
-        if (collision.gameObject.CompareTag("WireHandle"))
-        {
-            PlaySound();
-            UpdateScore(-10);
-            isTouchingWire = true;
-        }
+        PlaySound();
+        UpdateScore(-10);
+        isTouchingWire = true;
+        Debug.Log("Collision with WireHandle started.");
     }
 
-    void OnCollisionExit(Collision collision)
+    public void OnHandleCollisionExit()
     {
-        if (collision.gameObject.CompareTag("WireHandle"))
-        {
-            isTouchingWire = false;
-        }
+        isTouchingWire = false;
+        Debug.Log("Collision with WireHandle ended.");
     }
 
-    void PlaySound()
+    private void PlaySound()
     {
         if (audioSource != null && !audioSource.isPlaying)
         {
@@ -53,13 +47,13 @@ public class HotWire : MonoBehaviour
         }
     }
 
-    void UpdateScore(int points)
+    private void UpdateScore(int points)
     {
         score += points;
         Debug.Log("Current Score: " + score);
     }
 
-    void CheckForPoints()
+    private void CheckForPoints()
     {
         if (!isTouchingWire && Time.time - lastScoreTime >= 5f)
         {
