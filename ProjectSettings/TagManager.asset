@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Anchor
+  - Destination
+  - HatMole
+  - NormalMole
   layers:
   - Default
   - TransparentFX
@@ -11,10 +15,10 @@ TagManager:
   - 
   - Water
   - UI
+  - Character
   - 
-  - 
-  - 
-  - 
+  - CanLayer
+  - BallLayer
   - 
   - 
   - 
