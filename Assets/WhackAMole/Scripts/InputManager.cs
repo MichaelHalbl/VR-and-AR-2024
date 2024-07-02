@@ -20,7 +20,8 @@ public class InputManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
-            {
+            { 
+                Debug.Log("Hit Hit");
                 if (hit.collider != null && hit.collider.gameObject != null && 
                     (hit.collider.gameObject.CompareTag("NormalMole") || hit.collider.gameObject.CompareTag("HatMole")))
                 {
