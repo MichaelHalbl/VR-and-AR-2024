@@ -49,12 +49,16 @@ public class HotWire : MonoBehaviour
 
     private void UpdateScore(int points, bool isPenalty = false)
     {
-        score += points;
-        Debug.Log("Current Score: " + score);
+
         if (isPenalty)
         {
+            score += points;
             Debug.Log("Penalty Points: " + points);
-        }
+            Debug.Log("Current Score + isPenalty: " + score);
+        } else {
+            score += points;
+            Debug.Log("Current Score: " + score); 
+        }       
     }
 
     private void CheckForPoints()
