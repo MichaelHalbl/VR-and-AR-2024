@@ -270,7 +270,7 @@ MonoBehaviour:
       m_Name: Scale Toggle
       m_Type: 1
       m_ExpectedControlType: 
-      m_Id: 316ec107-ab0c-4ed1-a084-cd461d5e8dd9
+      m_Id: 4307e59d-4ab7-4f87-954c-acf507677576
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -282,7 +282,7 @@ MonoBehaviour:
       m_Name: Scale Delta
       m_Type: 0
       m_ExpectedControlType: Vector2
-      m_Id: fdb77816-696a-4f2e-ac2c-28c261b1a397
+      m_Id: 7424b4b6-27d8-4a4f-be5d-cd52f2770f80
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -581,7 +581,7 @@ MonoBehaviour:
       m_Name: Scale Toggle
       m_Type: 1
       m_ExpectedControlType: 
-      m_Id: b7bd9cb7-d499-4669-a5a6-c5a2ad2a6692
+      m_Id: 8d164ddb-4e52-4ad0-99db-b4c3cb779bf9
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -593,7 +593,7 @@ MonoBehaviour:
       m_Name: Scale Delta
       m_Type: 0
       m_ExpectedControlType: Vector2
-      m_Id: 58dbc13d-7ea1-48aa-8294-00fda22a307d
+      m_Id: d3fa0b46-cdc6-4d55-aba0-cb389a62e1d1
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1739,10 +1739,6 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2761784063978902504, guid: c1800acf6366418a9b5f610249000331, type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2761784063978902504, guid: c1800acf6366418a9b5f610249000331, type: 3}
       propertyPath: m_Parameters.numCornerVertices
       value: 4
       objectReference: {fileID: 0}
@@ -2038,7 +2034,7 @@ MonoBehaviour:
       m_Name: Scale Toggle
       m_Type: 1
       m_ExpectedControlType: 
-      m_Id: 637c2af7-74f8-49f3-9f96-8d27bad9fb9f
+      m_Id: b03fbf97-620a-4290-afd1-a43cac2e2bf2
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2050,7 +2046,7 @@ MonoBehaviour:
       m_Name: Scale Delta
       m_Type: 0
       m_ExpectedControlType: Vector2
-      m_Id: 2a0e7b2b-d49d-42cf-aa3e-ed2cd457b0e6
+      m_Id: 54e02df7-7da6-46cc-bd68-59ca639516bf
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2177,10 +2173,6 @@ PrefabInstance:
     - target: {fileID: 2761784063978902504, guid: c1800acf6366418a9b5f610249000331, type: 3}
       propertyPath: m_Parameters.numCapVertices
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2761784063978902504, guid: c1800acf6366418a9b5f610249000331, type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2761784063978902504, guid: c1800acf6366418a9b5f610249000331, type: 3}
       propertyPath: m_Parameters.numCornerVertices
@@ -2466,7 +2458,7 @@ MonoBehaviour:
       m_Name: Scale Toggle
       m_Type: 1
       m_ExpectedControlType: 
-      m_Id: f26f72a9-40a8-4a6e-88cb-61518ac6bed0
+      m_Id: 5db292ea-331e-465b-93f2-66e72add7b6b
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2478,7 +2470,7 @@ MonoBehaviour:
       m_Name: Scale Delta
       m_Type: 0
       m_ExpectedControlType: Vector2
-      m_Id: 78612b08-e643-41e7-8214-592727962b4c
+      m_Id: 1877bf3a-e824-4065-aa89-6c51e3d1d251
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
