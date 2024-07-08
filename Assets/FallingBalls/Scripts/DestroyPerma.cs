@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyYellow : MonoBehaviour
+public class DestroyPerma : MonoBehaviour
 {
 
     private double y;
@@ -21,9 +21,6 @@ public class DestroyYellow : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) {
         if(transform.position.y >= y) return;
-        if(transform.position.y > y-2.5) {
-            GameObject.Find("ScriptObject").GetComponent<Gamelogic>().score += 30;
-        }
         Destroy(this.gameObject);
     }
 }

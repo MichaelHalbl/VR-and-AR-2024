@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Gamelogic : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Gamelogic : MonoBehaviour
     public int highscore;
     public int pointsToWin;
     private SpawnPoint[] spawnPoints;
+    public TextMeshProUGUI scoreText;
 
     struct SpawnPoint {
         public int color;
@@ -38,13 +40,13 @@ public class Gamelogic : MonoBehaviour
 
         System.Random random = new System.Random();
         for(int i = 0; i < cHoles; i++) {
-            float posx = (float)(random.NextDouble()*3.58);
-            float posz = (float)(random.NextDouble()*3.58);
+            float posx = (float)(random.NextDouble()*1.79);
+            float posz = (float)(random.NextDouble()*1.79);
             bool overlap = false;
             for (int j = 0; j < i; j++)
             {
-                if (top.transform.position.x + (posx - 1.79f) <= spawnPoints[j].hole.transform.position.x + 0.42f && top.transform.position.x + (posx - 1.79f) >= spawnPoints[j].hole.transform.position.x - 0.42f &&
-                top.transform.position.z + (posz - 1.79f) >= spawnPoints[j].hole.transform.position.z - 0.42f && top.transform.position.z + (posz - 1.79f) <= spawnPoints[j].hole.transform.position.z + 0.42f)
+                if (top.transform.position.x + (posx - 0.895f) <= spawnPoints[j].hole.transform.position.x + 0.205f && top.transform.position.x + (posx - 0.895f) >= spawnPoints[j].hole.transform.position.x - 0.205f &&
+                top.transform.position.z + (posz - 0.895f) >= spawnPoints[j].hole.transform.position.z - 0.205f && top.transform.position.z + (posz - 0.895f) <= spawnPoints[j].hole.transform.position.z + 0.205f)
                 {
                     spawnPoints[j].spawnCount += (int)((level * 3 + 5) / (spawnPoints[j].color + 1));
                     if (spawnPoints[j].maxWait > spawnPoints[j].minWait + 1)
@@ -58,7 +60,7 @@ public class Gamelogic : MonoBehaviour
 
             if(!overlap){
                 int color = random.Next(3);
-                spawnPoints[i].hole = Instantiate(holes[color], new Vector3(top.transform.position.x+(posx-1.79f), top.transform.position.y-0.41f, top.transform.position.z+(posz-1.79f)), Quaternion.identity);
+                spawnPoints[i].hole = Instantiate(holes[color], new Vector3(top.transform.position.x+(posx-0.895f), top.transform.position.y-0.16f, top.transform.position.z+(posz-0.895f)), Quaternion.identity);
                 spawnPoints[i].color = color;
                 spawnPoints[i].spawnCount = (int)((level * 3 + 5) / (color+1));
                 spawnPoints[i].time =  Time.time;
@@ -66,7 +68,7 @@ public class Gamelogic : MonoBehaviour
                 spawnPoints[i].maxWait = 10+color;
                 spawnPoints[i].wait = random.Next(spawnPoints[i].maxWait-spawnPoints[i].minWait)+spawnPoints[i].minWait;
                 spawnPoints[i].spawnFalse = random.Next(100) + 1 >= 80;
-                Instantiate(holes[color], new Vector3(floor.transform.position.x+(posx-1.79f), floor.transform.position.y+0.41f, floor.transform.position.z+(posz-1.79f)), Quaternion.identity);
+                Instantiate(holes[color], new Vector3(floor.transform.position.x+(posx-0.895f), floor.transform.position.y+0.16f, floor.transform.position.z+(posz-0.895f)), Quaternion.identity);
             }
         }
     }
@@ -74,6 +76,9 @@ public class Gamelogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        scoreText.text = "Score: " + score;
+
         bool done = true;
         
         for(int i = 0; i < cHoles; i++) {
