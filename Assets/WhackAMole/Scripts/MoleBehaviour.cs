@@ -45,7 +45,7 @@ public class MoleBehaviour : MonoBehaviour
         moleCollider.enabled = false;
     } else
      {
-      if (state == 0)
+      if (state == 0 && hitPoints == 0)
         {
             moleCollider.enabled = false;
         }
@@ -64,9 +64,10 @@ public class MoleBehaviour : MonoBehaviour
         if (hitPoints <= 0)
         {
             moleCollider.enabled = false;
-            StartCoroutine(DestroyAfterSeconds(gameObject, 0.5f));
+            StartCoroutine(DestroyAfterSeconds(gameObject, 0.2f));
             scoreManager.changeScore(molePoints);
             scoreTextManager.UpdateScoreText(scoreManager.getScore());
+
 
             Debug.Log("Mole was hit, score: " + scoreManager.getScore());
         }

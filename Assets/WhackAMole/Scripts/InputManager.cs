@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
    void Update()
 {
-    Mouse mouse = Mouse.current;
+    /*Mouse mouse = Mouse.current;
     if (mouse != null && mouse.leftButton.wasPressedThisFrame)
     {
         Vector2 mousePosition = mouse.position.ReadValue();
@@ -36,6 +36,7 @@ public class InputManager : MonoBehaviour
             }
         }
     }
+    */
 }
 
    

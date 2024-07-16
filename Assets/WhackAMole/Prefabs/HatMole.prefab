@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moleAnimator: {fileID: 0}
-  hitPoints: 2
+  hitPoints: 1
   molePoints: 10
 --- !u!136 &-7328395267557586426
 CapsuleCollider:
