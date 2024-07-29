@@ -114,7 +114,7 @@ MonoBehaviour:
   tableCanPosition: {fileID: 2830627710115324976}
   canCount: 6
   ballCount: 5
-  bonusdistance: 5
+  distancetable: 5
 --- !u!1 &8098660286640988520
 GameObject:
   m_ObjectHideFlags: 0

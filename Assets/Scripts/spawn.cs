@@ -1,20 +1,23 @@
 using UnityEngine;
+
 public class Spawner : MonoBehaviour
 {
-    // Prefabs für die Dosen, die Bälle und die Tische
+    // Prefabs fÃ¼r die Dosen, die BÃ¤lle und die Tische
     public GameObject canPrefab;
     public GameObject ballPrefab;
     public GameObject tableBallsPrefab;
     public GameObject tableCanPrefab;
 
-    // Positionen für die Tische
+    // Positionen fÃ¼r die Tische
     public Transform tableBallsPosition;
     public Transform tableCanPosition;
 
-    // Anzahl der Dosen und Bälle
+    // Anzahl der Dosen und BÃ¤lle
     public int canCount = 10;
     public int ballCount = 5;
     public int distancetable = 5;
+
+    private int cansKnockedDown = 0;
 
     void Start()
     {
@@ -23,7 +26,7 @@ public class Spawner : MonoBehaviour
         GameObject tableCan = Instantiate(tableCanPrefab, tableCanPosition.position, Quaternion.identity);
 
         // Dosen in Pyramidenform auf dem Tisch spawnen
-        Vector3 startPosition = tableCan.transform.position + Vector3.up * 1.0f; // Höhe des Tisches berücksichtigen
+        Vector3 startPosition = tableCan.transform.position + Vector3.up * 1.0f; // HÃ¶he des Tisches berÃ¼cksichtigen
         float canSpacingX = 0.15f; // Horizontaler Abstand zwischen den Dosen
         float canSpacingY = 0.2f; // Vertikaler Abstand zwischen den Reihen der Dosen
 
@@ -43,19 +46,44 @@ public class Spawner : MonoBehaviour
                 if (currentCanCount >= canCount) break;
 
                 Vector3 position = startPosition + new Vector3(col * canSpacingX - (cansPerRow - 1) * 0.5f * canSpacingX, row * canSpacingY, 0);
-                Instantiate(canPrefab, position, Quaternion.identity);
+                GameObject can = Instantiate(canPrefab, position, Quaternion.identity);
+                can.AddComponent<Can>(); // Add the Can script to each can
                 currentCanCount++;
             }
             if (currentCanCount >= canCount) break;
         }
-        // Bälle nebeneinander auf dem Tisch spawnen
-        Vector3 ballStartPosition = tableBalls.transform.position + Vector3.up * 1.0f; // Höhe des Tisches berücksichtigen
-        float ballSpacing = 0.2f; // Abstand zwischen den Bällen
+        // BÃ¤lle nebeneinander auf dem Tisch spawnen
+        Vector3 ballStartPosition = tableBalls.transform.position + Vector3.up * 1.0f; // HÃ¶he des Tisches berÃ¼cksichtigen
+        float ballSpacing = 0.2f; // Abstand zwischen den BÃ¤llen
         for (int i = 0; i < ballCount; i++)
         {
             Vector3 position = ballStartPosition + new Vector3(-0.5f + (i * ballSpacing), -0.4f, 0);
             Instantiate(ballPrefab, position, Quaternion.identity);
         }
     }
+
+    public void CanKnockedDown()
+    {
+        cansKnockedDown++;
+        if (cansKnockedDown >= canCount)
+        {
+            Debug.Log("Level gemeistert!");
+        }
+    }
 }
 
+public class Can : MonoBehaviour
+{
+    private bool hasFallen = false;
+
+    void Update()
+    {
+        if (transform.position.y < 0.1f && !hasFallen)
+        {
+            hasFallen = true;
+            Spawner spawner = FindObjectOfType<Spawner>();
+            spawner.CanKnockedDown();
+            Destroy(gameObject);
+        }
+    }
+}
