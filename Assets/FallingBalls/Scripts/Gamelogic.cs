@@ -5,6 +5,7 @@ using TMPro;
 
 public class Gamelogic : MonoBehaviour
 {
+    private ScoreScript scoreObject;
     public GameObject[] holes;
     public GameObject[] balls;
     public GameObject floor;
@@ -31,8 +32,8 @@ public class Gamelogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        level = 1;
+        scoreObject = GameObject.Find("ScoreObject").GetComponent<ScoreScript>();
+        level = scoreObject.fallingBallsLevel;
         cHoles = 2 + level;
         score = 0;
         spawnPoints = new SpawnPoint[cHoles];
@@ -108,7 +109,8 @@ public class Gamelogic : MonoBehaviour
 
         if(done) {
 
-            //Level done
+            if(score > scoreObject.fallingBallsHighscore)
+                scoreObject.fallingBallsHighscore = score;
 
         }
 
