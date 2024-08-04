@@ -41,6 +41,22 @@ public class WireHandle : MonoBehaviour
                 hotWire.OnHandleCollisionEnter();
             }
         }
+        else if (other.CompareTag("StartPoint"))
+        {
+            var hotWire = other.GetComponentInParent<HotWire>();
+            if (hotWire != null)
+            {
+                hotWire.OnStartTriggerEnter();
+            }
+        }
+        else if (other.CompareTag("EndPoint"))
+        {
+            var hotWire = other.GetComponentInParent<HotWire>();
+            if (hotWire != null)
+            {
+                hotWire.OnEndTriggerEnter();
+            }
+        }
     }
 
     void OnTriggerExit(Collider other)
