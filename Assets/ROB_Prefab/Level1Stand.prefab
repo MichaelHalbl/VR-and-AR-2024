@@ -114,7 +114,8 @@ MonoBehaviour:
   tableCanPosition: {fileID: 2830627710115324976}
   canCount: 6
   ballCount: 5
-  distancetable: 5
+  distancetable: 0
+  canDespawnSound: {fileID: 8300000, guid: 16fba6d30ed741d4a9fdd6e79ee2f3ac, type: 3}
 --- !u!1 &8098660286640988520
 GameObject:
   m_ObjectHideFlags: 0
