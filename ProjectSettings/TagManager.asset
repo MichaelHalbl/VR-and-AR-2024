@@ -6,6 +6,8 @@ TagManager:
   tags:
   - WireHandle
   - HotWire
+  - StartPoint
+  - EndPoint
   layers:
   - Default
   - TransparentFX
