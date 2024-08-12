@@ -8,6 +8,8 @@ TagManager:
   - HotWire
   - StartPoint
   - EndPoint
+  - Destination
+  - Hand
   layers:
   - Default
   - TransparentFX
