@@ -7,7 +7,7 @@ public class HammerBehaviour : MonoBehaviour
 
 
     public AudioSource audioSource; // The AudioSource component attached to the hammer
-    public AudioClip audioClip;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,7 @@ public class HammerBehaviour : MonoBehaviour
         // Get the AudioSource component
 
         audioSource = GetComponent<AudioSource>();
+       // Debug.Log("Audio Source: " + audioSource);
     }
 
     // Update is called once per frame
