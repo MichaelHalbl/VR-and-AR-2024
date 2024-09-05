@@ -11,6 +11,7 @@ public class MoleBehaviour : MonoBehaviour
     public int molePoints = 1;
      private ScoreManager scoreManager;
      private ScoreTextManager scoreTextManager;
+     private AudioSource audioSource;
 
     void Start()
     { 
@@ -29,6 +30,12 @@ public class MoleBehaviour : MonoBehaviour
         if (scoreTextManager == null)
         {
             Debug.LogError("ScoreTextManager instance not found in the scene.");
+        }
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("No AudioSource component found on this GameObject.");
         }
     }
 
@@ -63,6 +70,10 @@ public class MoleBehaviour : MonoBehaviour
 
         if (hitPoints <= 0)
         {
+             if (audioSource != null)
+            {
+                  audioSource.Play();
+            }
             moleCollider.enabled = false;
             StartCoroutine(DestroyAfterSeconds(gameObject, 0.2f));
             scoreManager.changeScore(molePoints);

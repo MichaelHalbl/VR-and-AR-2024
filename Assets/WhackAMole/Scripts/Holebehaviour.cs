@@ -19,7 +19,7 @@ public class Holebehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(scoreManager.getScore() < 100){
+       /* if(scoreManager.getScore() < 100){
             levelTextManager.UpdateLevelText(1);
         }
 
@@ -29,6 +29,7 @@ public class Holebehaviour : MonoBehaviour
         else {
             levelTextManager.UpdateLevelText(3);
         }
+        */
        
     }
 
@@ -40,16 +41,16 @@ public class Holebehaviour : MonoBehaviour
 
         if(scoreManager.getScore() < 100){
             Invoke("Spawn", Random.Range(8f, 10f));
-            levelTextManager.UpdateLevelText(1);
+            //levelTextManager.UpdateLevelText(1);
         }
 
         else if(scoreManager.getScore() < 200){
             Invoke("Spawn", Random.Range(5f, 7f));
-            levelTextManager.UpdateLevelText(2);
+            //levelTextManager.UpdateLevelText(2);
         }
         else {
             Invoke("Spawn", Random.Range(3f, 5f));
-            levelTextManager.UpdateLevelText(3);
+            //levelTextManager.UpdateLevelText(3);
         }
     }
 
