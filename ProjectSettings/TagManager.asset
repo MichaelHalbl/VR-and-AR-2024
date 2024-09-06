@@ -10,6 +10,9 @@ TagManager:
   - EndPoint
   - Destination
   - Hand
+  - TrackingObject
+  - Actors
+  - Anchor
   layers:
   - Default
   - TransparentFX
@@ -42,7 +45,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - PostProcessing
   m_SortingLayers:
   - name: Default
     uniqueID: 0
