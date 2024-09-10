@@ -1,56 +1,39 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public InputActionAsset inputActions;
-
-    private InputAction startAction;
-    private InputAction optionsAction;
-    private InputAction quitAction;
-
-    void Awake()
+    // Method to start the first game
+    public void StartGame1()
     {
-        var menuActions = inputActions.FindActionMap("Menu");
-
-        startAction = menuActions.FindAction("Start");
-        optionsAction = menuActions.FindAction("Options");
-        quitAction = menuActions.FindAction("Quit");
-
-        startAction.performed += ctx => StartGame();
-        optionsAction.performed += ctx => OpenOptions();
-        quitAction.performed += ctx => QuitGame();
+        Debug.Log("Start Game 1 clicked");
+       // SceneManager.LoadScene("GameScene1"); 
     }
 
-    void OnEnable()
+    // Method to start the second game
+    public void StartGame2()
     {
-        startAction.Enable();
-        optionsAction.Enable();
-        quitAction.Enable();
+        Debug.Log("Start Game 2 clicked");
+        //SceneManager.LoadScene("GameScene2"); 
+    }
+    // Method to start the third game
+    public void StartGame3()
+    {
+        Debug.Log("Start Game 3 clicked");
+       // SceneManager.LoadScene("GameScene3"); 
     }
 
-    void OnDisable()
+    // Method to start the fourth game
+    public void StartGame4()
     {
-        startAction.Disable();
-        optionsAction.Disable();
-        quitAction.Disable();
+        Debug.Log("Start Game 4 clicked");
+       // SceneManager.LoadScene("GameScene4"); 
     }
 
-    public void StartGame()
-    {
-        Debug.Log("Start clicked");
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void OpenOptions()
-    {
-        Debug.Log("Options menu opened");
-    }
-
+    // Method to quit the game
     public void QuitGame()
     {
         Debug.Log("Game is quitting");
-        // Application.Quit();
+        Application.Quit();
     }
 }
