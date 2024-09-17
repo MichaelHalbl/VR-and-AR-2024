@@ -10,7 +10,7 @@ public class ScoreTextManager : MonoBehaviour
     public TextMeshPro scoreText;
     void Start()
     {
-        scoreText.text = "Score: 0";
+       // scoreText.text = "Score: 0";
     }
    public void UpdateScoreText(int score)
     {
