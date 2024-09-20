@@ -300,6 +300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TerrainGame
       objectReference: {fileID: 0}
+    - target: {fileID: 1949009590572320387, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3304169121636679623, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.96
@@ -348,9 +352,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5457515316820236614, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105872012029880886, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7248551073517722138, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 464c3a8e3169da74eb519800c0c2ab24, type: 2}
+    - target: {fileID: 7378687270776354325, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698221335358460734, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843754573653325522, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991337792356792884, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966919290951159098, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3529230687294373679, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
+    - {fileID: 3498314756400933700, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5631723385361921514, guid: ce3e2573f278db844a468abb3b00cf82, type: 3}
       insertIndex: 1
@@ -1115,7 +1152,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514580461}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
