@@ -30,19 +30,20 @@ public class RewardsScrtipt : MonoBehaviour
             }
         }
         if(scoreObject.MoleLevel < 3)  {
-            Renderer moleR = mole.GetComponent<Renderer>();
-            moleR.material = blankMat;
-            moleR.material.color = Color.gray;
+            /*SkinnedMeshRenderer r = mole.GetComponent<SkinnedMeshRenderer>();
+            Material[] mats =  {blankMat, blankMat, blankMat, blankMat};
+            r.materials = mats;*/
         }
         if(scoreObject.DrahtLevel < 3) {
             Renderer drahtR = draht.GetComponent<Renderer>();
             drahtR.material = blankMat;
             drahtR.material.color = Color.gray;
         }
-        if(scoreObject.DosenLevel < 3 && scoreObject.fallingBallsLevel < 3 && scoreObject.MoleLevel < 3 && scoreObject.DrahtLevel < 3){
-            Renderer bigR = big.GetComponent<Renderer>();
-            bigR.material = blankMat;
-            bigR.material.color = Color.gray;
+        if(scoreObject.DosenLevel < 3 || scoreObject.fallingBallsLevel < 3 || scoreObject.MoleLevel < 3 || scoreObject.DrahtLevel < 3){
+            Renderer[] AlllRenderers = big.GetComponentsInChildren<Renderer>();
+            foreach  (Renderer r in AlllRenderers) {
+                r.material = blankMat;
+            }
         }
         
     }

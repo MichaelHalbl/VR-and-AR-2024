@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/HubWorld/HubWorld.unity
     guid: 184737fa92a875a4fa1006590bd96765
+  - enabled: 0
+    path: Assets/FallingBalls/FallingBalls.unity
+    guid: 5cf741cfc9638094f8cea6d35dd37a43
+  - enabled: 1
+    path: Assets/Scenes/FallingBallsGame.unity
+    guid: e244b565b7bd6144f91247360bf48f02
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}

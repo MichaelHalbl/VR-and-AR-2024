@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Gamelogic : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Gamelogic : MonoBehaviour
     public int pointsToWin;
     private SpawnPoint[] spawnPoints;
     public TextMeshProUGUI scoreText;
+    public GameObject spawnPoint;
+    public GameObject player;
 
     struct SpawnPoint {
         public int color;
@@ -27,6 +30,10 @@ public class Gamelogic : MonoBehaviour
         public int minWait;
         public int maxWait;
         public bool spawnFalse;
+    }
+
+    void Awake() {
+        player.transform.position = spawnPoint.transform.position;
     }
 
     // Start is called before the first frame update
@@ -108,10 +115,18 @@ public class Gamelogic : MonoBehaviour
             done = true;
 
         if(done) {
+            if(score > 0) {
+                scoreObject.fallingBallsLevel++;
+            }
 
             if(score > scoreObject.fallingBallsHighscore)
                 scoreObject.fallingBallsHighscore = score;
-
+            var op =  SceneManager.LoadSceneAsync("HubWorld");
+            op.allowSceneActivation = false;
+            while(op.progress < 0.9f) {
+                
+            }
+            op.allowSceneActivation = true;
         }
 
     }

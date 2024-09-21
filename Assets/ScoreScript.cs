@@ -13,7 +13,6 @@ public class ScoreScript : MonoBehaviour
     public int DosenHighscore = 0;
     public int MoleLevel = 1;
     public int MoleHighscore = 0;
-    
 
     void Awake() {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Score");
