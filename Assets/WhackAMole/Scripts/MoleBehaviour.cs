@@ -80,7 +80,6 @@ public class MoleBehaviour : MonoBehaviour
             scoreManager.changeScore(molePoints);
             scoreTextManager.UpdateScoreText(scoreManager.getScore());
 
-
             //Debug.Log("Mole was hit, score: " + scoreManager.getScore());
         }
         else {

@@ -51,12 +51,21 @@ public class Holebehaviour : MonoBehaviour
         else if (scoreManager.getScore() < 300){
             Invoke("Spawn", Random.Range(3f, 5f));
             //levelTextManager.UpdateLevelText(3);
+        } else if (scoreManager.getScore() <= -1 && scoreManager.getScore() >= 300) {
+            CancelInvoke("Spawn");
+            StopScene();
         }
-        else {
-           // Gameover and restart after 10f
+    }
+    public void StopSpawning()
+    {
+        CancelInvoke("Spawn");
+    }
 
-            Invoke("Spawn", 10f);
-        }
+    public void StopScene()
+    {
+        // Load a different scene, e.g., GameOver scene
+       // SceneManager.LoadScene("GameOver");
+       Time.timeScale = 0;
     }
 
 
