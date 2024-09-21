@@ -8,6 +8,7 @@ TagManager:
   - Destination
   - HatMole
   - NormalMole
+  - RedMole
   layers:
   - Default
   - TransparentFX

@@ -70,10 +70,9 @@ public class MoleBehaviour : MonoBehaviour
 
         if (hitPoints <= 0)
         {
-             if (audioSource != null)
-            {
-                  audioSource.Play();
-            }
+            
+            audioSource.Play();
+    
             moleCollider.enabled = false;
             StartCoroutine(DestroyAfterSeconds(gameObject, 0.2f));
             scoreManager.changeScore(molePoints);
