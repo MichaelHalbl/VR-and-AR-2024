@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ba88dbced0e344b909784c8c01598d29, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 642a507f891994681ba313c2d326aa11, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -706,8 +706,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78.97007, y: 311}
-  m_SizeDelta: {x: 652.0579, y: 67.3079}
+  m_AnchoredPosition: {x: 18.8137, y: 291.6641}
+  m_SizeDelta: {x: 1047.3708, y: 28.6359}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1231118681
 MonoBehaviour:
@@ -729,7 +729,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GAME NAME
+  m_text: "JahrmarktVRgn\xFCgen"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -738,8 +738,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280707508
-  m_fontColor: {r: 0.7075472, g: 0.413666, b: 0.15018693, a: 1}
+    rgba: 4279530978
+  m_fontColor: {r: 0.8867924, g: 0.45719934, b: 0.079476655, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 33
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535

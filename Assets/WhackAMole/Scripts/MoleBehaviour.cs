@@ -76,11 +76,11 @@ public class MoleBehaviour : MonoBehaviour
             }
             moleCollider.enabled = false;
             StartCoroutine(DestroyAfterSeconds(gameObject, 0.2f));
-           // scoreManager.changeScore(molePoints);
-           // scoreTextManager.UpdateScoreText(scoreManager.getScore());
+            scoreManager.changeScore(molePoints);
+            scoreTextManager.UpdateScoreText(scoreManager.getScore());
 
 
-            Debug.Log("Mole was hit, score: " + scoreManager.getScore());
+            //Debug.Log("Mole was hit, score: " + scoreManager.getScore());
         }
         else {
             moleCollider.enabled = true;

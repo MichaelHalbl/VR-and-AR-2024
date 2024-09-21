@@ -40,12 +40,12 @@ public class Holebehaviour : MonoBehaviour
        
 
         if(scoreManager.getScore() < 100){
-            Invoke("Spawn", Random.Range(8f, 10f));
+            Invoke("Spawn", Random.Range(7f, 9f));
             //levelTextManager.UpdateLevelText(1);
         }
 
         else if(scoreManager.getScore() < 200){
-            Invoke("Spawn", Random.Range(5f, 7f));
+            Invoke("Spawn", Random.Range(4f, 6f));
             //levelTextManager.UpdateLevelText(2);
         }
         else {

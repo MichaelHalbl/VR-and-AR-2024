@@ -14,7 +14,17 @@ public class ScoreTextManager : MonoBehaviour
     }
    public void UpdateScoreText(int score)
     {
-        scoreText.text = "Score: " + score;
+        if(score < 100){
+            scoreText.text = "Score: " + score + "\nLevel: 1";
+        }
+
+        else if(score < 200){
+           scoreText.text = "Score: " + score + "\nLevel: 2";
+        }
+        else {
+            scoreText.text = "Score: " + score + "\nLevel: 3";
+        }
+        
     }
     // Update is called once per frame
     void Update()
