@@ -67,13 +67,15 @@ public class MoleBehaviour : MonoBehaviour
     public void GotHit()
     {
         hitPoints--;
+        audioSource.enabled = true;
+        audioSource.Play();
 
         if (hitPoints <= 0)
         {
-            
-            audioSource.Play();
     
             moleCollider.enabled = false;
+            //StartCoroutine(DestroyAfterAudio(gameObject, audioSource.clip.length));
+
             StartCoroutine(DestroyAfterSeconds(gameObject, 0.2f));
             scoreManager.changeScore(molePoints);
             scoreTextManager.UpdateScoreText(scoreManager.getScore());

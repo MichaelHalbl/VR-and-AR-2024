@@ -39,7 +39,7 @@ public class Holebehaviour : MonoBehaviour
         GameObject mole = Instantiate(moles[randomIndex], transform.position, Quaternion.identity) as GameObject;
        
 
-        if(scoreManager.getScore() < 100){
+        if(scoreManager.getScore() < 100 && scoreManager.getScore() >= 0){
             Invoke("Spawn", Random.Range(7f, 9f));
             //levelTextManager.UpdateLevelText(1);
         }
@@ -48,11 +48,17 @@ public class Holebehaviour : MonoBehaviour
             Invoke("Spawn", Random.Range(4f, 6f));
             //levelTextManager.UpdateLevelText(2);
         }
-        else {
+        else if (scoreManager.getScore() < 300){
             Invoke("Spawn", Random.Range(3f, 5f));
             //levelTextManager.UpdateLevelText(3);
         }
+        else {
+           // Gameover and restart after 10f
+
+            Invoke("Spawn", 10f);
+        }
     }
+
 
     void OnMouseDown()
     {
