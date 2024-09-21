@@ -13,6 +13,7 @@ TagManager:
   - TrackingObject
   - Actors
   - Anchor
+  - Score
   layers:
   - Default
   - TransparentFX
