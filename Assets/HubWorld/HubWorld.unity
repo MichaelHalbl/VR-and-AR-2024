@@ -556,8 +556,8 @@ GameObject:
   m_Component:
   - component: {fileID: 391606017}
   m_Layer: 0
-  m_Name: Hand
-  m_TagString: Hand
+  m_Name: PlayerHand
+  m_TagString: WireHandle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1650,8 +1650,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1864900425}
   m_Layer: 0
-  m_Name: Hand
-  m_TagString: Hand
+  m_Name: PlayerHand
+  m_TagString: WireHandle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
