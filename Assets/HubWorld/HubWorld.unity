@@ -1837,6 +1837,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 132983542101475441, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
+      propertyPath: m_TagString
+      value: StartPoint
+      objectReference: {fileID: 0}
     - target: {fileID: 1804240243812177429, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
       propertyPath: m_BoundingSphereOverride.w
       value: 0
@@ -1848,6 +1852,10 @@ PrefabInstance:
     - target: {fileID: 1804240243812177429, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
       propertyPath: m_BoundingSphereOverride.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923384033072821651, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
+      propertyPath: m_TagString
+      value: EndPoint
       objectReference: {fileID: 0}
     - target: {fileID: 2570023592369723293, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
       propertyPath: m_Mesh
@@ -1889,10 +1897,22 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 79336696}
+    - target: {fileID: 3964701911068235286, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
+      propertyPath: m_TagString
+      value: WireHandle
+      objectReference: {fileID: 0}
     - target: {fileID: 5773069710051403280, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1339795117}
+    - target: {fileID: 6548136188032179536, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
+      propertyPath: m_TagString
+      value: HotWire
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942805211873948369, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
+      propertyPath: m_TagString
+      value: WireHandle
+      objectReference: {fileID: 0}
     - target: {fileID: 8656353694511058724, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.14
