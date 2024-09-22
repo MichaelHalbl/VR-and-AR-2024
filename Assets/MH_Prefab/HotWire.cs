@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HotWire : MonoBehaviour
 {
@@ -9,12 +10,20 @@ public class HotWire : MonoBehaviour
     private bool isTouchingWire = false;
     private bool hasStarted = false;
     private bool hasFinished = false;
+    private ScoreScript scoreObject;
+    public GameObject spawnPoint;
+    public GameObject player;
 
-    public Transform startPoint;  // Diese müssen im Inspector zugewiesen werden
-    public Transform endPoint;    // Diese müssen im Inspector zugewiesen werden
+    public Transform startPoint;  // Diese mï¿½ssen im Inspector zugewiesen werden
+    public Transform endPoint;    // Diese mï¿½ssen im Inspector zugewiesen werden
+
+    void Awake() {
+        player.transform.position = spawnPoint.transform.position;
+    }
 
     void Start()
     {
+        scoreObject = GameObject.Find("ScoreObject").GetComponent<ScoreScript>();
         colliders = GetComponentsInChildren<CapsuleCollider>();
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
@@ -36,6 +45,17 @@ public class HotWire : MonoBehaviour
         {
             CheckForPoints();
         }
+        if(hasFinished) {
+            if(score > scoreObject.DrahtHighscore) {
+                scoreObject.DrahtHighscore = score;
+            }
+            var op =  SceneManager.LoadSceneAsync("HubWorld");
+            op.allowSceneActivation = false;
+            while(op.progress < 0.9f) {
+                
+            }
+            op.allowSceneActivation = true;
+        }
     }
 
     public void OnHandleCollisionEnter()
@@ -43,7 +63,7 @@ public class HotWire : MonoBehaviour
         if (!hasStarted || hasFinished) return;
 
         PlaySound();
-        UpdateScore(-10, true);
+        UpdateScore(10, true);
         isTouchingWire = true;
         Debug.Log("Collision with WireHandle started.");
     }

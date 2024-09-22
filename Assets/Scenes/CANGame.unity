@@ -1293,6 +1293,14 @@ PrefabInstance:
       value: 4.524
       objectReference: {fileID: 0}
     - target: {fileID: 7566164013935269846, guid: bb6f6151a3d1e3948bd34802996d5207, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1903697648}
+    - target: {fileID: 7566164013935269846, guid: bb6f6151a3d1e3948bd34802996d5207, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 151973332}
+    - target: {fileID: 7566164013935269846, guid: bb6f6151a3d1e3948bd34802996d5207, type: 3}
       propertyPath: distancetable
       value: 0
       objectReference: {fileID: 0}
@@ -1348,6 +1356,11 @@ PrefabInstance:
       addedObject: {fileID: 151973333}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb6f6151a3d1e3948bd34802996d5207, type: 3}
+--- !u!1 &1903697648 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4592956391713993908, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+  m_PrefabInstance: {fileID: 896823955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1918710031
 LightingSettings:
   m_ObjectHideFlags: 0

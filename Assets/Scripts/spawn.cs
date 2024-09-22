@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour
 {
@@ -7,21 +8,36 @@ public class Spawner : MonoBehaviour
     public GameObject ballPrefab;
     public GameObject tableBallsPrefab;
     public GameObject tableCanPrefab;
+    private ScoreScript scoreObject;
+    public GameObject spawnPoint;
+    public GameObject player;
 
     // Positionen für die Tische
     public Transform tableBallsPosition;
     public Transform tableCanPosition;
 
     // Anzahl der Dosen und Bälle
-    private int canCount = 6;
+    private int canCount;
     private int ballCount = 6;
     private int distancetable = 0;
 
     private int cansKnockedDown = 0;
     private int ballsFallen = 0;  // Zählt, wie viele Bälle gefallen sind
+    private bool won = false;
+    private bool over =  false;
+
+    void Awake() {
+        player.transform.position = spawnPoint.transform.position;
+    }
 
     void Start()
     {
+        scoreObject = GameObject.Find("ScoreObject").GetComponent<ScoreScript>();
+        canCount = 4 + (2*scoreObject.DosenLevel);
+        ballCount = 6 - (scoreObject.DosenLevel/3);
+        distancetable = scoreObject.DosenLevel - 1;
+
+
         // Tische spawnen
         Vector3 tableballOffsetPosition = tableBallsPosition.position + new Vector3(0, 0, distancetable);
         GameObject tableBalls = Instantiate(tableBallsPrefab, tableballOffsetPosition, Quaternion.identity);
@@ -73,6 +89,8 @@ public class Spawner : MonoBehaviour
         cansKnockedDown++;
         if (cansKnockedDown >= canCount)
         {
+            over = true;
+            won = true;
             Debug.Log("Level gemeistert!");
         }
     }
@@ -82,7 +100,22 @@ public class Spawner : MonoBehaviour
         ballsFallen++;
         if (ballsFallen >= ballCount)
         {
+            over = true;
             Debug.Log("Spiel verloren!");
+        }
+    }
+
+    void Update() {
+        if(over) {
+            if(won) {
+                scoreObject.DosenLevel++;
+            }
+            var op =  SceneManager.LoadSceneAsync("HubWorld");
+            op.allowSceneActivation = false;
+            while(op.progress < 0.9f) {
+                
+            }
+            op.allowSceneActivation = true;
         }
     }
 }

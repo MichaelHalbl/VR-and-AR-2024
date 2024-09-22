@@ -5,7 +5,7 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.SceneManagement;
 
-public class StartCan : MonoBehaviour
+public class StartMole : MonoBehaviour
 {
 
     private InputDevice rightHandController; // Referenz auf den rechten Controller
@@ -29,7 +29,7 @@ public class StartCan : MonoBehaviour
     {
         if (isInRange && rightHandController.IsPressed(InputHelpers.Button.PrimaryButton, out bool isPressedA, 0.1f) && isPressedA)
         {
-            var op = SceneManager.LoadSceneAsync("CANGame");
+            var op = SceneManager.LoadSceneAsync("MoleGame");
             op.allowSceneActivation = false;
             while(op.progress < 0.9f) {
 

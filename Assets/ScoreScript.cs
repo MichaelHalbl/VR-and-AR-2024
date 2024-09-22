@@ -7,10 +7,8 @@ public class ScoreScript : MonoBehaviour
 
     public int fallingBallsLevel = 1;
     public int fallingBallsHighscore = 0;
-    public int DrahtLevel = 1;
     public int DrahtHighscore = 0;
     public int DosenLevel = 1;
-    public int DosenHighscore = 0;
     public int MoleLevel = 1;
     public int MoleHighscore = 0;
 
