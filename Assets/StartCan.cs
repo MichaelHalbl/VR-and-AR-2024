@@ -7,12 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class StartCan : MonoBehaviour
 {
-
     private InputDevice rightHandController; // Referenz auf den rechten Controller
     private bool isInRange = false; // Ob der Spieler in Reichweite des Ticket-Standes ist
-    /*private int start = 60;*/
+    private bool isLoading = false; // Um zu verhindern, dass der Ladeprozess mehrfach gestartet wird
 
-    // Start is called before the first frame update
     void Start()
     {
         // Suche den rechten Hand-Controller
@@ -24,16 +22,17 @@ public class StartCan : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (isInRange && rightHandController.IsPressed(InputHelpers.Button.PrimaryButton, out bool isPressedA, 0.1f) && isPressedA)
+        if (isInRange && !isLoading && rightHandController.IsPressed(InputHelpers.Button.PrimaryButton, out bool isPressedA, 0.1f) && isPressedA)
         {
-            var op = SceneManager.LoadSceneAsync("CanGame");
-        } 
+            // Starte den Ladeprozess nur einmal
+            isLoading = true;
+            StartCoroutine(LoadSceneAsync("CanGame"));
+        }
     }
 
-     void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -41,11 +40,28 @@ public class StartCan : MonoBehaviour
         }
     }
 
-     void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isInRange = false; // Spieler ist nicht mehr in Reichweite
         }
+    }
+
+    // Coroutine für das asynchrone Laden der Szene
+    IEnumerator LoadSceneAsync(string sceneName)
+    {
+        // Beginne das asynchrone Laden der Szene
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        asyncLoad.allowSceneActivation = false;  // Verhindere die sofortige Aktivierung der neuen Szene
+
+        // Warte, bis die Szene zu 90 % geladen ist
+        while (asyncLoad.progress < 0.9f)
+        {
+            yield return null;  // Warte, bis die nächste Frame berechnet wird
+        }
+
+        // Wenn die Szene zu 90 % geladen ist, aktiviere sie
+        asyncLoad.allowSceneActivation = true;
     }
 }

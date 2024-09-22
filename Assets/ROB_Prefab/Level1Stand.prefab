@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1840020480787414485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7221955279931911630}
+  - component: {fileID: 3254735848667111222}
+  m_Layer: 10
+  m_Name: Blocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7221955279931911630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840020480787414485}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7760110371817356674}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3254735848667111222
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840020480787414485}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.69, y: 3.2, z: 5.4}
+  m_Center: {x: 0.36, y: 0, z: 0}
 --- !u!1 &3124998380909033129
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +78,7 @@ Transform:
   m_GameObject: {fileID: 3124998380909033129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53, y: 0, z: 5.92}
+  m_LocalPosition: {x: 0.53, y: 0, z: 4.129}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -110,11 +163,10 @@ MonoBehaviour:
   ballPrefab: {fileID: 977486555939482027, guid: 85ff8b3a8dc4c6d4faaff8ecd28fd35a, type: 3}
   tableBallsPrefab: {fileID: 6139545244079201939, guid: f02a1da03d1971b49ae080a3353dbdde, type: 3}
   tableCanPrefab: {fileID: 8814370989078163621, guid: 9234ea1ca7764264ca84ba10c4a7764d, type: 3}
+  spawnPoint: {fileID: 0}
+  player: {fileID: 0}
   tableBallsPosition: {fileID: 1988946461657310548}
   tableCanPosition: {fileID: 2830627710115324976}
-  canCount: 6
-  ballCount: 5
-  distancetable: 5
 --- !u!1 &8098660286640988520
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +200,7 @@ Transform:
   - {fileID: 5946271083684016889}
   - {fileID: 1988946461657310548}
   - {fileID: 2830627710115324976}
+  - {fileID: 7221955279931911630}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6921482745842053482

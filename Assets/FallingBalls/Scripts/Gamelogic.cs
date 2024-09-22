@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -21,7 +20,10 @@ public class Gamelogic : MonoBehaviour
     public GameObject spawnPoint;
     public GameObject player;
 
-    struct SpawnPoint {
+    private bool isLoading = false; // Sicherstellen, dass die Szene nur einmal geladen wird
+
+    struct SpawnPoint
+    {
         public int color;
         public GameObject hole;
         public int spawnCount;
@@ -32,11 +34,11 @@ public class Gamelogic : MonoBehaviour
         public bool spawnFalse;
     }
 
-    void Awake() {
+    void Awake()
+    {
         player.transform.position = spawnPoint.transform.position;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         scoreObject = GameObject.Find("ScoreObject").GetComponent<ScoreScript>();
@@ -47,14 +49,17 @@ public class Gamelogic : MonoBehaviour
         pointsToWin = 0;
 
         System.Random random = new System.Random();
-        for(int i = 0; i < cHoles; i++) {
-            float posx = (float)(random.NextDouble()*1.79);
-            float posz = (float)(random.NextDouble()*1.79);
+        for (int i = 0; i < cHoles; i++)
+        {
+            float posx = (float)(random.NextDouble() * 1.79);
+            float posz = (float)(random.NextDouble() * 1.79);
             bool overlap = false;
             for (int j = 0; j < i; j++)
             {
-                if (top.transform.position.x + (posx - 0.895f) <= spawnPoints[j].hole.transform.position.x + 0.205f && top.transform.position.x + (posx - 0.895f) >= spawnPoints[j].hole.transform.position.x - 0.205f &&
-                top.transform.position.z + (posz - 0.895f) >= spawnPoints[j].hole.transform.position.z - 0.205f && top.transform.position.z + (posz - 0.895f) <= spawnPoints[j].hole.transform.position.z + 0.205f)
+                if (top.transform.position.x + (posx - 0.895f) <= spawnPoints[j].hole.transform.position.x + 0.205f &&
+                    top.transform.position.x + (posx - 0.895f) >= spawnPoints[j].hole.transform.position.x - 0.205f &&
+                    top.transform.position.z + (posz - 0.895f) >= spawnPoints[j].hole.transform.position.z - 0.205f &&
+                    top.transform.position.z + (posz - 0.895f) <= spawnPoints[j].hole.transform.position.z + 0.205f)
                 {
                     spawnPoints[j].spawnCount += (int)((level * 3 + 5) / (spawnPoints[j].color + 1));
                     if (spawnPoints[j].maxWait > spawnPoints[j].minWait + 1)
@@ -66,44 +71,46 @@ public class Gamelogic : MonoBehaviour
                 }
             }
 
-            if(!overlap){
+            if (!overlap)
+            {
                 int color = random.Next(3);
-                spawnPoints[i].hole = Instantiate(holes[color], new Vector3(top.transform.position.x+(posx-0.895f), top.transform.position.y-0.16f, top.transform.position.z+(posz-0.895f)), Quaternion.identity);
+                spawnPoints[i].hole = Instantiate(holes[color], new Vector3(top.transform.position.x + (posx - 0.895f), top.transform.position.y - 0.16f, top.transform.position.z + (posz - 0.895f)), Quaternion.identity);
                 spawnPoints[i].color = color;
-                spawnPoints[i].spawnCount = (int)((level * 3 + 5) / (color+1));
-                spawnPoints[i].time =  Time.time;
+                spawnPoints[i].spawnCount = (int)((level * 3 + 5) / (color + 1));
+                spawnPoints[i].time = Time.time;
                 spawnPoints[i].minWait = 2;
-                spawnPoints[i].maxWait = 10+color;
-                spawnPoints[i].wait = random.Next(spawnPoints[i].maxWait-spawnPoints[i].minWait)+spawnPoints[i].minWait;
+                spawnPoints[i].maxWait = 10 + color;
+                spawnPoints[i].wait = random.Next(spawnPoints[i].maxWait - spawnPoints[i].minWait) + spawnPoints[i].minWait;
                 spawnPoints[i].spawnFalse = random.Next(100) + 1 >= 80;
-                Instantiate(holes[color], new Vector3(floor.transform.position.x+(posx-0.895f), floor.transform.position.y+0.16f, floor.transform.position.z+(posz-0.895f)), Quaternion.identity);
+                Instantiate(holes[color], new Vector3(floor.transform.position.x + (posx - 0.895f), floor.transform.position.y + 0.16f, floor.transform.position.z + (posz - 0.895f)), Quaternion.identity);
             }
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         scoreText.text = "Score: " + score;
 
         bool done = true;
-        
-        for(int i = 0; i < cHoles; i++) {
-            if(Time.time >= spawnPoints[i].time+spawnPoints[i].wait) {
-                if(spawnPoints[i].spawnCount > 0) {
+
+        for (int i = 0; i < cHoles; i++)
+        {
+            if (Time.time >= spawnPoints[i].time + spawnPoints[i].wait)
+            {
+                if (spawnPoints[i].spawnCount > 0)
+                {
                     System.Random random = new System.Random();
-                    if (spawnPoints[i].spawnFalse) 
+                    if (spawnPoints[i].spawnFalse)
                     {
-                        Instantiate(balls[spawnPoints[i].color+3], spawnPoints[i].hole.transform.position, Quaternion.identity);
+                        Instantiate(balls[spawnPoints[i].color + 3], spawnPoints[i].hole.transform.position, Quaternion.identity);
                         spawnPoints[i].time = Time.time;
                         spawnPoints[i].wait = random.Next(spawnPoints[i].maxWait - spawnPoints[i].minWait) + spawnPoints[i].minWait;
                         spawnPoints[i].spawnFalse = random.Next(100) + 1 >= 80;
                         continue;
                     }
                     Instantiate(balls[spawnPoints[i].color], spawnPoints[i].hole.transform.position, Quaternion.identity);
-                    spawnPoints[i].time =  Time.time;
-                    spawnPoints[i].wait = random.Next(spawnPoints[i].maxWait-spawnPoints[i].minWait)+spawnPoints[i].minWait;
+                    spawnPoints[i].time = Time.time;
+                    spawnPoints[i].wait = random.Next(spawnPoints[i].maxWait - spawnPoints[i].minWait) + spawnPoints[i].minWait;
                     spawnPoints[i].spawnFalse = random.Next(100) + 1 >= 80;
                     spawnPoints[i].spawnCount--;
                 }
@@ -114,15 +121,39 @@ public class Gamelogic : MonoBehaviour
         if (score < 0)
             done = true;
 
-        if(done) {
-            if(score > 0) {
+        if (done && !isLoading)
+        {
+            isLoading = true; // Verhindere mehrfaches Laden der Szene
+
+            if (score > 0)
+            {
                 scoreObject.fallingBallsLevel++;
             }
 
-            if(score > scoreObject.fallingBallsHighscore)
+            if (score > scoreObject.fallingBallsHighscore)
+            {
                 scoreObject.fallingBallsHighscore = score;
-            var op =  SceneManager.LoadSceneAsync("HubWorld");
+            }
+
+            // Starte den asynchronen Szenenwechsel
+            StartCoroutine(LoadHubWorldSceneAsync());
+        }
+    }
+
+    // Coroutine für das asynchrone Laden der HubWorld-Szene
+    IEnumerator LoadHubWorldSceneAsync()
+    {
+        // Lade die Szene asynchron, aber blockiere die Aktivierung, bis sie bereit ist
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("HubWorld");
+        asyncLoad.allowSceneActivation = false;
+
+        // Warte, bis die Szene zu mindestens 90 % geladen ist
+        while (asyncLoad.progress < 0.9f)
+        {
+            yield return null; // Warte bis zur nächsten Frame
         }
 
+        // Aktiviere die neue Szene
+        asyncLoad.allowSceneActivation = true;
     }
 }

@@ -2724,6 +2724,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7748268839786898530, guid: 72fd178cd36608a4dba706a00cfd7802, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748268839786898530, guid: 72fd178cd36608a4dba706a00cfd7802, type: 3}
       propertyPath: m_TagString
       value: WireHandle
       objectReference: {fileID: 0}

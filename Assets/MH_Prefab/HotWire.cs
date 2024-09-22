@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class HotWire : MonoBehaviour
 {
@@ -14,10 +15,13 @@ public class HotWire : MonoBehaviour
     public GameObject spawnPoint;
     public GameObject player;
 
-    public Transform startPoint;  // Diese m�ssen im Inspector zugewiesen werden
-    public Transform endPoint;    // Diese m�ssen im Inspector zugewiesen werden
+    public Transform startPoint;  // Diese müssen im Inspector zugewiesen werden
+    public Transform endPoint;    // Diese müssen im Inspector zugewiesen werden
 
-    void Awake() {
+    private bool isLoading = false; // Sicherstellen, dass die Szene nur einmal geladen wird
+
+    void Awake()
+    {
         player.transform.position = spawnPoint.transform.position;
     }
 
@@ -45,11 +49,20 @@ public class HotWire : MonoBehaviour
         {
             CheckForPoints();
         }
-        if(hasFinished) {
-            if(score > scoreObject.DrahtHighscore) {
+
+        // Wenn das Spiel beendet ist und die Szene noch nicht geladen wird, wechsle die Szene
+        if (hasFinished && !isLoading)
+        {
+            isLoading = true; // Verhindere mehrfaches Laden der Szene
+
+            // Aktualisiere den Highscore, falls der aktuelle Score höher ist
+            if (score > scoreObject.DrahtHighscore)
+            {
                 scoreObject.DrahtHighscore = score;
             }
-            var op =  SceneManager.LoadSceneAsync("HubWorld");
+
+            // Starte den asynchronen Szenenwechsel
+            StartCoroutine(LoadHubWorldSceneAsync());
         }
     }
 
@@ -108,5 +121,22 @@ public class HotWire : MonoBehaviour
     {
         hasFinished = true;
         Debug.Log("Game Finished. Final Score: " + score);
+    }
+
+    // Coroutine für das asynchrone Laden der HubWorld-Szene
+    IEnumerator LoadHubWorldSceneAsync()
+    {
+        // Lade die Szene asynchron, aber blockiere die Aktivierung, bis sie bereit ist
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("HubWorld");
+        asyncLoad.allowSceneActivation = false;
+
+        // Warte, bis die Szene zu mindestens 90 % geladen ist
+        while (asyncLoad.progress < 0.9f)
+        {
+            yield return null;  // Warte bis zur nächsten Frame
+        }
+
+        // Aktiviere die neue Szene
+        asyncLoad.allowSceneActivation = true;
     }
 }

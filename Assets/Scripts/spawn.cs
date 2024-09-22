@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,27 +25,35 @@ public class Spawner : MonoBehaviour
     private int cansKnockedDown = 0;
     private int ballsFallen = 0;  // Zählt, wie viele Bälle gefallen sind
     private bool won = false;
-    private bool over =  false;
+    private bool over = false;
+    private bool isLoading = false;  // Sicherstellen, dass die Szene nur einmal geladen wird
 
-    void Awake() {
+    void Awake()
+    {
         player.transform.position = spawnPoint.transform.position;
     }
 
     void Start()
     {
         scoreObject = GameObject.Find("ScoreObject").GetComponent<ScoreScript>();
-        canCount = 4 + (2*scoreObject.DosenLevel);
-        ballCount = 6 - (scoreObject.DosenLevel/3);
-        distancetable = scoreObject.DosenLevel - 1;
+        
+            if (scoreObject.DosenLevel == 1)
+    {
+        canCount = 3; // Level 1: 3 Dosen
+    }
+    else if (scoreObject.DosenLevel >= 2 )
+    {
+        canCount = 6; // Level 2 und 3: 6 Dosen
+    }
 
+        ballCount = 6 - (scoreObject.DosenLevel / 3);
+        distancetable = scoreObject.DosenLevel - 1;
 
         // Tische spawnen
         Vector3 tableballOffsetPosition = tableBallsPosition.position + new Vector3(0, 0, distancetable);
         GameObject tableBalls = Instantiate(tableBallsPrefab, tableballOffsetPosition, Quaternion.identity);
-        
-        
-        GameObject tableCan = Instantiate(tableCanPrefab, tableCanPosition.position, Quaternion.identity);
 
+        GameObject tableCan = Instantiate(tableCanPrefab, tableCanPosition.position, Quaternion.identity);
 
         // Dosen in Pyramidenform auf dem Tisch spawnen
         Vector3 startPosition = tableCan.transform.position + Vector3.up * 1.0f; // Höhe des Tisches berücksichtigen
@@ -73,6 +82,7 @@ public class Spawner : MonoBehaviour
             }
             if (currentCanCount >= canCount) break;
         }
+
         // Bälle nebeneinander auf dem Tisch spawnen
         Vector3 ballStartPosition = tableBalls.transform.position + Vector3.up * 1.0f; // Höhe des Tisches berücksichtigen
         float ballSpacing = 0.2f; // Abstand zwischen den Bällen
@@ -105,16 +115,39 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    void Update() {
-        if(over) {
-            if(won) {
+    void Update()
+    {
+        if (over && !isLoading)
+        {
+            // Verhindere, dass die Szene mehrfach geladen wird
+            isLoading = true;
+
+            if (won)
+            {
                 scoreObject.DosenLevel++;
             }
-            var op =  SceneManager.LoadSceneAsync("HubWorld");
+
+            StartCoroutine(LoadHubWorldSceneAsync());
         }
     }
-}
 
+    // Coroutine für das asynchrone Laden der HubWorld-Szene
+    IEnumerator LoadHubWorldSceneAsync()
+    {
+        // Lade die Szene asynchron, aber blockiere die Aktivierung, bis sie bereit ist
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("HubWorld");
+        asyncLoad.allowSceneActivation = false;
+
+        // Warte, bis die Szene zu 90 % geladen ist
+        while (asyncLoad.progress < 0.9f)
+        {
+            yield return null;  // Warte bis zur nächsten Frame
+        }
+
+        // Aktiviere die neue Szene
+        asyncLoad.allowSceneActivation = true;
+    }
+}
 
 public class Can : MonoBehaviour
 {
@@ -132,7 +165,6 @@ public class Can : MonoBehaviour
     }
 }
 
-
 public class Ball : MonoBehaviour
 {
     private bool hasFallen = false;
@@ -149,4 +181,3 @@ public class Ball : MonoBehaviour
         }
     }
 }
-
