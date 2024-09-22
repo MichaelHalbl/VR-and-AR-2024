@@ -1156,7 +1156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 188106217}
   m_Layer: 0
-  m_Name: EndPoint
+  m_Name: EndPointFREE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1171,7 +1171,7 @@ Transform:
   m_GameObject: {fileID: 188106216}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.339, z: 8.85}
+  m_LocalPosition: {x: 0, y: 1.339, z: 13.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1317,7 +1317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2578a34b3829e4cbf2d9073f15c70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gondolaPosition: {fileID: 1065398459}
+  gondolaPosition: {fileID: 2108466223}
   playerStartPosition: {fileID: 188106217}
   xrOrigin: {fileID: 547519603}
 --- !u!65 &272309330
@@ -5505,37 +5505,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1107589238
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1107589239}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1107589239
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107589238}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1913309030}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1119438703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8493651661879600283, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
@@ -9312,7 +9281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2108466223}
   m_Layer: 0
-  m_Name: StartPosition
+  m_Name: StartPositionFREE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9573,9 +9542,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 421785768378071780, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
       insertIndex: -1
       addedObject: {fileID: 272309328}
-    - targetCorrespondingSourceObject: {fileID: 421785768378071780, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1107589239}
     - targetCorrespondingSourceObject: {fileID: 8303033413595865660, guid: f67a42b0659bee24b8c0090e7247e409, type: 3}
       insertIndex: -1
       addedObject: {fileID: 188106217}
