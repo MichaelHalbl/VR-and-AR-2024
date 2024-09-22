@@ -30,11 +30,6 @@ public class StartFalling : MonoBehaviour
         if (isInRange && rightHandController.IsPressed(InputHelpers.Button.PrimaryButton, out bool isPressedA, 0.1f) && isPressedA)
         {
             var op = SceneManager.LoadSceneAsync("FallingBallsGame");
-            op.allowSceneActivation = false;
-            while(op.progress < 0.9f) {
-
-            }
-            op.allowSceneActivation = true;
         } 
     }
 

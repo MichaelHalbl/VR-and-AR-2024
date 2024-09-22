@@ -29,13 +29,8 @@ public class StartCan : MonoBehaviour
     {
         if (isInRange && rightHandController.IsPressed(InputHelpers.Button.PrimaryButton, out bool isPressedA, 0.1f) && isPressedA)
         {
-            var op = SceneManager.LoadSceneAsync("CANGame");
-            op.allowSceneActivation = false;
-            while(op.progress < 0.9f) {
-
-            }
-            op.allowSceneActivation = true;
-        }   
+            var op = SceneManager.LoadSceneAsync("CanGame");
+        } 
     }
 
      void OnTriggerEnter(Collider other)

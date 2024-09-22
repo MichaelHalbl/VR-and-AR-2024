@@ -122,11 +122,6 @@ public class Gamelogic : MonoBehaviour
             if(score > scoreObject.fallingBallsHighscore)
                 scoreObject.fallingBallsHighscore = score;
             var op =  SceneManager.LoadSceneAsync("HubWorld");
-            op.allowSceneActivation = false;
-            while(op.progress < 0.9f) {
-                
-            }
-            op.allowSceneActivation = true;
         }
 
     }

@@ -111,11 +111,6 @@ public class Spawner : MonoBehaviour
                 scoreObject.DosenLevel++;
             }
             var op =  SceneManager.LoadSceneAsync("HubWorld");
-            op.allowSceneActivation = false;
-            while(op.progress < 0.9f) {
-                
-            }
-            op.allowSceneActivation = true;
         }
     }
 }
