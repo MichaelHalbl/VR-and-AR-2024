@@ -4,11 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Anchor
-  - Destination
-  - HatMole
-  - NormalMole
-  - RedMole
+  - Ignite
   layers:
   - Default
   - TransparentFX
@@ -16,12 +12,12 @@ TagManager:
   - 
   - Water
   - UI
-  - Character
-  - 
-  - CanLayer
-  - BallLayer
   - 
   - 
+  - Grabbable
+  - Hands
+  - Teleporter
+  - NoHandCollide
   - 
   - 
   - 

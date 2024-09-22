@@ -37,6 +37,7 @@ public class MoleBehaviour : MonoBehaviour
         {
             Debug.LogError("No AudioSource component found on this GameObject.");
         }
+        audioSource.enabled = true;
     }
 
     void Update()
@@ -67,16 +68,15 @@ public class MoleBehaviour : MonoBehaviour
     public void GotHit()
     {
         hitPoints--;
-        audioSource.enabled = true;
         audioSource.Play();
 
         if (hitPoints <= 0)
         {
     
             moleCollider.enabled = false;
-            //StartCoroutine(DestroyAfterAudio(gameObject, audioSource.clip.length));
+            StartCoroutine(DestroyAfterAudio(gameObject, audioSource.clip.length));
 
-            StartCoroutine(DestroyAfterSeconds(gameObject, 0.2f));
+            //StartCoroutine(DestroyAfterSeconds(gameObject, 0.2f));
             scoreManager.changeScore(molePoints);
             scoreTextManager.UpdateScoreText(scoreManager.getScore());
 
@@ -97,6 +97,12 @@ public class MoleBehaviour : MonoBehaviour
 public void DestroyThisMole()
 {
     Destroy(gameObject);
+}
+
+public IEnumerator DestroyAfterAudio(GameObject gameObjectToDestroy, float delay)
+{
+    yield return new WaitForSeconds(delay);
+    Destroy(gameObjectToDestroy);
 }
 
 }

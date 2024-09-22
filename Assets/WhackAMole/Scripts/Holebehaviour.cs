@@ -35,6 +35,13 @@ public class Holebehaviour : MonoBehaviour
 
     void Spawn()
     {
+        if (IsGameOver())
+        {
+            Debug.Log("Game Over! No more moles will spawn.");
+            CancelInvoke("Spawn");  
+            return;
+        }
+
         int randomIndex = Random.Range(0, moles.Length);
         GameObject mole = Instantiate(moles[randomIndex], transform.position, Quaternion.identity) as GameObject;
        
@@ -51,9 +58,13 @@ public class Holebehaviour : MonoBehaviour
         else if (scoreManager.getScore() < 300){
             Invoke("Spawn", Random.Range(3f, 5f));
             //levelTextManager.UpdateLevelText(3);
-        } else if (scoreManager.getScore() <= -1 || scoreManager.getScore() >= 300) {
-            CancelInvoke("Spawn");
         }
+    }
+
+    private bool IsGameOver()
+    {
+        // Game over condition: score is negative or exceeds 300
+        return scoreManager.getScore() <= -1 || scoreManager.getScore() >= 300;
     }
    
 }
