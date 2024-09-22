@@ -30,9 +30,10 @@ public class RewardsScrtipt : MonoBehaviour
             }
         }
         if(scoreObject.MoleLevel < 3)  {
-            /*SkinnedMeshRenderer r = mole.GetComponent<SkinnedMeshRenderer>();
+            mole = mole.transform.Find("HatMole").gameObject;
+            SkinnedMeshRenderer r = mole.GetComponent<SkinnedMeshRenderer>();
             Material[] mats =  {blankMat, blankMat, blankMat, blankMat};
-            r.materials = mats;*/
+            r.materials = mats;
         }
         if(scoreObject.DrahtLevel < 3) {
             Renderer drahtR = draht.GetComponent<Renderer>();
@@ -41,7 +42,7 @@ public class RewardsScrtipt : MonoBehaviour
         }
         if(scoreObject.DosenLevel < 3 || scoreObject.fallingBallsLevel < 3 || scoreObject.MoleLevel < 3 || scoreObject.DrahtLevel < 3){
             Renderer[] AlllRenderers = big.GetComponentsInChildren<Renderer>();
-            foreach  (Renderer r in AlllRenderers) {
+            foreach(Renderer r in AlllRenderers) {
                 r.material = blankMat;
             }
         }
