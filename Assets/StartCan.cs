@@ -5,7 +5,7 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.SceneManagement;
 
-public class StartFalling : MonoBehaviour
+public class StartCan : MonoBehaviour
 {
 
     private InputDevice rightHandController; // Referenz auf den rechten Controller
@@ -29,7 +29,7 @@ public class StartFalling : MonoBehaviour
     {
         if (isInRange && rightHandController.IsPressed(InputHelpers.Button.PrimaryButton, out bool isPressedA, 0.1f) && isPressedA)
         {
-            /*var op = SceneManager.LoadSceneAsync(scene.FallingBalls);*/
+            /*var op = SceneManager.LoadSceneAsync(scene.CanGame);*/
         }
        
 

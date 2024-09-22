@@ -13,17 +13,22 @@ public class Spawner : MonoBehaviour
     public Transform tableCanPosition;
 
     // Anzahl der Dosen und Bälle
-    public int canCount = 10;
-    public int ballCount = 5;
-    public int distancetable = 5;
+    private int canCount = 6;
+    private int ballCount = 6;
+    private int distancetable = 0;
 
     private int cansKnockedDown = 0;
+    private int ballsFallen = 0;  // Zählt, wie viele Bälle gefallen sind
 
     void Start()
     {
         // Tische spawnen
-        GameObject tableBalls = Instantiate(tableBallsPrefab, tableBallsPosition.position, Quaternion.identity);
+        Vector3 tableballOffsetPosition = tableBallsPosition.position + new Vector3(0, 0, distancetable);
+        GameObject tableBalls = Instantiate(tableBallsPrefab, tableballOffsetPosition, Quaternion.identity);
+        
+        
         GameObject tableCan = Instantiate(tableCanPrefab, tableCanPosition.position, Quaternion.identity);
+
 
         // Dosen in Pyramidenform auf dem Tisch spawnen
         Vector3 startPosition = tableCan.transform.position + Vector3.up * 1.0f; // Höhe des Tisches berücksichtigen
@@ -58,7 +63,8 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < ballCount; i++)
         {
             Vector3 position = ballStartPosition + new Vector3(-0.5f + (i * ballSpacing), -0.4f, 0);
-            Instantiate(ballPrefab, position, Quaternion.identity);
+            GameObject ball = Instantiate(ballPrefab, position, Quaternion.identity);
+            ball.AddComponent<Ball>(); // Add the Ball script to each ball
         }
     }
 
@@ -70,7 +76,17 @@ public class Spawner : MonoBehaviour
             Debug.Log("Level gemeistert!");
         }
     }
+
+    public void BallFallen()
+    {
+        ballsFallen++;
+        if (ballsFallen >= ballCount)
+        {
+            Debug.Log("Spiel verloren!");
+        }
+    }
 }
+
 
 public class Can : MonoBehaviour
 {
@@ -87,3 +103,22 @@ public class Can : MonoBehaviour
         }
     }
 }
+
+
+public class Ball : MonoBehaviour
+{
+    private bool hasFallen = false;
+
+    void Update()
+    {
+        // Überprüfen, ob der Ball unter eine bestimmte Y-Position gefallen ist
+        if (transform.position.y < 0.1f && !hasFallen)
+        {
+            hasFallen = true;
+            Spawner spawner = FindObjectOfType<Spawner>();
+            spawner.BallFallen(); // Informiere den Spawner, dass ein Ball gefallen ist
+            Destroy(gameObject); // Zerstöre (despawne) den Ball
+        }
+    }
+}
+

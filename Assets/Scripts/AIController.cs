@@ -38,7 +38,7 @@ public class AIController : MonoBehaviour
             // Überprüfen, ob der Agent auf einem NavMesh steht
             if (!agent.isOnNavMesh)
             {
-                Debug.LogError("NavMeshAgent is not on a NavMesh.");
+               
                 yield break; // Beende die Coroutine, wenn der Agent nicht auf dem NavMesh ist
             }
 
@@ -66,7 +66,7 @@ public class AIController : MonoBehaviour
         {
             if (!agent.isOnNavMesh)
             {
-                Debug.LogError("NavMeshAgent is not on a NavMesh.");
+               
                 yield break; // Beende die Coroutine, wenn der Agent nicht auf dem NavMesh ist
             }
 
@@ -100,6 +100,5 @@ public class AIController : MonoBehaviour
     private void SetWalkingAnimation(bool isWalking)
     {
         animator.SetBool("isWalking", isWalking);
-        Debug.Log("isWalking: " + isWalking);
     }
 }
