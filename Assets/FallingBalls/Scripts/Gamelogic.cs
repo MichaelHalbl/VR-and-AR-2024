@@ -19,7 +19,8 @@ public class Gamelogic : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public GameObject spawnPoint;
     public GameObject player;
-
+    public GameObject leftController;
+    public GameObject rightController;
     private bool isLoading = false; // Sicherstellen, dass die Szene nur einmal geladen wird
 
     struct SpawnPoint
@@ -34,6 +35,10 @@ public class Gamelogic : MonoBehaviour
         public bool spawnFalse;
     }
 
+    private float waitforEnd;
+    private float end = 20;
+    private bool waitingForEnd = false;
+
     void Awake()
     {
         player.transform.position = spawnPoint.transform.position;
@@ -41,6 +46,15 @@ public class Gamelogic : MonoBehaviour
 
     void Start()
     {
+        //add collider to controllers for contact with balls  and  bombs
+        SphereCollider leftCollider = leftController.AddComponent<SphereCollider>();
+        leftCollider.center = Vector3.zero;
+        leftCollider.radius = 0.1f;
+        SphereCollider rightCollider = rightController.AddComponent<SphereCollider>();
+        rightCollider.center = Vector3.zero;
+        rightCollider.radius = 0.1f;
+
+
         scoreObject = GameObject.Find("ScoreObject").GetComponent<ScoreScript>();
         level = scoreObject.fallingBallsLevel;
         cHoles = 2 + level;
@@ -48,6 +62,7 @@ public class Gamelogic : MonoBehaviour
         spawnPoints = new SpawnPoint[cHoles];
         pointsToWin = 0;
 
+        //spawn holes at random positions
         System.Random random = new System.Random();
         for (int i = 0; i < cHoles; i++)
         {
@@ -71,6 +86,7 @@ public class Gamelogic : MonoBehaviour
                 }
             }
 
+            //if two holes would overlab squash them together  as one hole
             if (!overlap)
             {
                 int color = random.Next(3);
@@ -89,39 +105,55 @@ public class Gamelogic : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = "Score: " + score;
+        //display score while playing
+        if(!waitingForEnd)
+            scoreText.text = "Score: " + score;
 
         bool done = true;
 
-        for (int i = 0; i < cHoles; i++)
-        {
-            if (Time.time >= spawnPoints[i].time + spawnPoints[i].wait)
+        //check for spawn timers and spawn  balls if  time is up, if all balls spawned game  is done
+        if(!waitingForEnd)
+            for (int i = 0; i < cHoles; i++)
             {
-                if (spawnPoints[i].spawnCount > 0)
+                if (Time.time >= spawnPoints[i].time + spawnPoints[i].wait)
                 {
-                    System.Random random = new System.Random();
-                    if (spawnPoints[i].spawnFalse)
+                    if (spawnPoints[i].spawnCount > 0)
                     {
-                        Instantiate(balls[spawnPoints[i].color + 3], spawnPoints[i].hole.transform.position, Quaternion.identity);
+                        System.Random random = new System.Random();
+                        if (spawnPoints[i].spawnFalse)
+                        {
+                            Instantiate(balls[spawnPoints[i].color + 3], spawnPoints[i].hole.transform.position, Quaternion.identity);
+                            spawnPoints[i].time = Time.time;
+                            spawnPoints[i].wait = random.Next(spawnPoints[i].maxWait - spawnPoints[i].minWait) + spawnPoints[i].minWait;
+                            spawnPoints[i].spawnFalse = random.Next(100) + 1 >= 80;
+                            continue;
+                        }
+                        Instantiate(balls[spawnPoints[i].color], spawnPoints[i].hole.transform.position, Quaternion.identity);
                         spawnPoints[i].time = Time.time;
                         spawnPoints[i].wait = random.Next(spawnPoints[i].maxWait - spawnPoints[i].minWait) + spawnPoints[i].minWait;
                         spawnPoints[i].spawnFalse = random.Next(100) + 1 >= 80;
-                        continue;
+                        spawnPoints[i].spawnCount--;
                     }
-                    Instantiate(balls[spawnPoints[i].color], spawnPoints[i].hole.transform.position, Quaternion.identity);
-                    spawnPoints[i].time = Time.time;
-                    spawnPoints[i].wait = random.Next(spawnPoints[i].maxWait - spawnPoints[i].minWait) + spawnPoints[i].minWait;
-                    spawnPoints[i].spawnFalse = random.Next(100) + 1 >= 80;
-                    spawnPoints[i].spawnCount--;
                 }
+                done = done && (spawnPoints[i].spawnCount == 0);
             }
-            done = done && (spawnPoints[i].spawnCount == 0);
-        }
 
         if (score < 0)
             done = true;
 
-        if (done && !isLoading)
+        //end  game  but  wait for a bit to show the game over/level complete screen and clean up scene
+        if(done && !waitingForEnd) {
+            waitingForEnd = true;
+            waitforEnd = Time.time;
+            if(score > 100 * level) 
+                scoreText.text = "Level Complete";
+            if(score < 100 * level)
+                scoreText.text = "Game Over";
+            Destroy(leftController.GetComponent<SphereCollider>());
+            Destroy(rightController.GetComponent<SphereCollider>());
+        }
+
+        if (done && !isLoading && Time.time > waitforEnd + end)
         {
             isLoading = true; // Verhindere mehrfaches Laden der Szene
 

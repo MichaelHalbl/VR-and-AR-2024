@@ -23,7 +23,7 @@ public class RewardsScrtipt : MonoBehaviour
             doseR.material = blankMat;
             doseR.material.color = Color.gray;
         }
-        if(scoreObject.fallingBallsLevel < 3)  {
+        if(scoreObject.fallingBallsLevel < 10)  {
             Renderer[] AlllRenderers = falling.GetComponentsInChildren<Renderer>();
             foreach  (Renderer r in AlllRenderers) {
                 r.material = blankMat;
@@ -40,7 +40,7 @@ public class RewardsScrtipt : MonoBehaviour
             drahtR.material = blankMat;
             drahtR.material.color = Color.gray;
         }
-        if(scoreObject.DosenLevel < 3 || scoreObject.fallingBallsLevel < 3 || scoreObject.MoleLevel < 3 || scoreObject.DrahtHighscore > 400){
+        if(scoreObject.DosenLevel < 3 || scoreObject.fallingBallsLevel < 10 || scoreObject.MoleLevel < 3 || scoreObject.DrahtHighscore > 400){
             Renderer[] AlllRenderers = big.GetComponentsInChildren<Renderer>();
             foreach(Renderer r in AlllRenderers) {
                 r.material = blankMat;
