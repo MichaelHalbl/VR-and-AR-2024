@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WireGame.unity
     guid: 70652de8190c35d4d95cf6ab63f04508
+  - enabled: 1
+    path: Assets/Scenes/MoleGame.unity
+    guid: 30aa25a131befb84f8c0e5cb8e92f58e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
