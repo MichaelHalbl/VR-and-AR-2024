@@ -145,7 +145,7 @@ public class Gamelogic : MonoBehaviour
         if(done && !waitingForEnd) {
             waitingForEnd = true;
             waitforEnd = Time.time;
-            if(score > 100 * level) 
+            if(score >= 100 * level) 
                 scoreText.text = "Level Complete";
             if(score < 100 * level)
                 scoreText.text = "Game Over";
@@ -157,7 +157,7 @@ public class Gamelogic : MonoBehaviour
         {
             isLoading = true; // Verhindere mehrfaches Laden der Szene
 
-            if (score > 0)
+            if (score >= 100*level)
             {
                 scoreObject.fallingBallsLevel++;
             }

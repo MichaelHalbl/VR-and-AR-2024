@@ -25,8 +25,8 @@ public class DestroyFalseYellow : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) {
         if(transform.position.y >= y) return;
-        if(transform.position.y > y-2.5) {
-            GameObject.Find("ScriptObject").GetComponent<Gamelogic>().score -= 20;
+        if(transform.position.y > y-2.8) {
+            GameObject.Find("ScriptObject").GetComponent<Gamelogic>().score -= 50;
             fail.Play(0);
         } else   {
             success.Play(0);

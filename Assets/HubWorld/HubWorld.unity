@@ -4248,6 +4248,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5812767774155254707, guid: 42725ad81c50a2144a66855ec57beb00, type: 3}
+      propertyPath: DrahtHighscore
+      value: 9999999
+      objectReference: {fileID: 0}
     - target: {fileID: 6159380362494169875, guid: 42725ad81c50a2144a66855ec57beb00, type: 3}
       propertyPath: m_Name
       value: ScoreObject

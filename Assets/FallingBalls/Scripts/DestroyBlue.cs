@@ -25,10 +25,11 @@ public class DestroyBlue : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) {
         if(transform.position.y >= y) return;
-        if(transform.position.y > y-2.5) {
+        if(transform.position.y > y-2.8) {
             GameObject.Find("ScriptObject").GetComponent<Gamelogic>().score += 10;
             success.Play(0);
         } else {
+            GameObject.Find("ScriptObject").GetComponent<Gamelogic>().score -= 15;
             fail.Play(0);
         }
         Destroy(this.gameObject);
