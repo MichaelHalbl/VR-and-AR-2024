@@ -6,15 +6,13 @@ public class HammerBehaviour : MonoBehaviour
 {
 
 
-    public AudioSource audioSource; // The AudioSource component attached to the hammer
-    public AudioClip audioClip;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        // Get the AudioSource component
+       
 
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,9 +38,7 @@ public class HammerBehaviour : MonoBehaviour
                 mole.moleAnimator.SetTrigger("hit");
                 mole.GotHit();
                 // Play the hit sound
-                audioSource.Play();
-                // Log the status of the audio
-                Debug.Log("Audio is playing: " + audioSource.isPlaying);
+               
             }
         }
     }

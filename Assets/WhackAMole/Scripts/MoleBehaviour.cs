@@ -11,6 +11,7 @@ public class MoleBehaviour : MonoBehaviour
     public int molePoints = 1;
      private ScoreManager scoreManager;
      private ScoreTextManager scoreTextManager;
+     private AudioSource audioSource;
 
     void Start()
     { 
@@ -30,6 +31,13 @@ public class MoleBehaviour : MonoBehaviour
         {
             Debug.LogError("ScoreTextManager instance not found in the scene.");
         }
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("No AudioSource component found on this GameObject.");
+        }
+        audioSource.enabled = true;
     }
 
     void Update()
@@ -60,16 +68,19 @@ public class MoleBehaviour : MonoBehaviour
     public void GotHit()
     {
         hitPoints--;
+        audioSource.Play();
 
         if (hitPoints <= 0)
         {
+    
             moleCollider.enabled = false;
-            StartCoroutine(DestroyAfterSeconds(gameObject, 0.2f));
+            StartCoroutine(DestroyAfterAudio(gameObject, audioSource.clip.length));
+
+            //StartCoroutine(DestroyAfterSeconds(gameObject, 0.2f));
             scoreManager.changeScore(molePoints);
             scoreTextManager.UpdateScoreText(scoreManager.getScore());
 
-
-            Debug.Log("Mole was hit, score: " + scoreManager.getScore());
+            //Debug.Log("Mole was hit, score: " + scoreManager.getScore());
         }
         else {
             moleCollider.enabled = true;
@@ -86,6 +97,12 @@ public class MoleBehaviour : MonoBehaviour
 public void DestroyThisMole()
 {
     Destroy(gameObject);
+}
+
+public IEnumerator DestroyAfterAudio(GameObject gameObjectToDestroy, float delay)
+{
+    yield return new WaitForSeconds(delay);
+    Destroy(gameObjectToDestroy);
 }
 
 }

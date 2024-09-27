@@ -47,8 +47,6 @@ public class PermaSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool done = true;
-        
         for(int i = 0; i < cHoles; i++) {
             if(Time.time >= spawnPoints[i].time+spawnPoints[i].wait) {
                 Instantiate(balls[spawnPoints[i].color], spawnPoints[i].hole.transform.position, Quaternion.identity);

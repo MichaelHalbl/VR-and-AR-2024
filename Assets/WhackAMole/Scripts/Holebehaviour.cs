@@ -5,11 +5,18 @@ using UnityEngine;
 public class Holebehaviour : MonoBehaviour
 {
     public GameObject [] moles;
-     private ScoreManager scoreManager;
-     private ScoreTextManager scoreTextManager;
-     private LevelTextManager levelTextManager;
+    private ScoreManager scoreManager;
+    private ScoreTextManager scoreTextManager;
+    private LevelTextManager levelTextManager;
+    private ScoreScript scoreObject;
+    private int level;
+    private int maxPoints;
+    
     void Start()
     {
+        scoreObject = GameObject.Find("ScoreObject").GetComponent<ScoreScript>();
+        level = scoreObject.MoleLevel;
+        maxPoints = level * 150;
         Invoke("Spawn", 2f); 
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
         scoreTextManager = GameObject.FindObjectOfType<ScoreTextManager>();
@@ -19,47 +26,42 @@ public class Holebehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(scoreManager.getScore() < 100){
-            levelTextManager.UpdateLevelText(1);
-        }
-
-        else if(scoreManager.getScore() < 200){
-            levelTextManager.UpdateLevelText(2);
-        }
-        else {
-            levelTextManager.UpdateLevelText(3);
-        }
        
     }
 
     void Spawn()
     {
+        if (IsGameOver())
+        {
+            scoreObject.MoleOver = true;
+            Debug.Log("Game Over! No more moles will spawn.");
+            CancelInvoke("Spawn");  
+            return;
+        }
+
         int randomIndex = Random.Range(0, moles.Length);
         GameObject mole = Instantiate(moles[randomIndex], transform.position, Quaternion.identity) as GameObject;
        
 
-        if(scoreManager.getScore() < 100){
-            Invoke("Spawn", Random.Range(8f, 10f));
-            levelTextManager.UpdateLevelText(1);
+        if(scoreManager.getScore() < maxPoints/3 && scoreManager.getScore() >= 0){
+            Invoke("Spawn", Random.Range(7f, 9f));
+            //levelTextManager.UpdateLevelText(1);
         }
 
-        else if(scoreManager.getScore() < 200){
-            Invoke("Spawn", Random.Range(5f, 7f));
-            levelTextManager.UpdateLevelText(2);
+        else if(scoreManager.getScore() < (maxPoints/3)*2){
+            Invoke("Spawn", Random.Range(4f, 6f));
+            //levelTextManager.UpdateLevelText(2);
         }
-        else {
+        else if (scoreManager.getScore() < maxPoints){
             Invoke("Spawn", Random.Range(3f, 5f));
-            levelTextManager.UpdateLevelText(3);
+            //levelTextManager.UpdateLevelText(3);
         }
     }
 
-    void OnMouseDown()
+    public bool IsGameOver()
     {
-        Debug.Log("Hole was clicked");
+        // Game over condition: score is negative or exceeds 300
+        return scoreManager.getScore() <= -1 || scoreManager.getScore() >= maxPoints;
     }
-
-    void buildLevel()
-    {
-
-    }
+   
 }
