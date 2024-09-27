@@ -36,7 +36,7 @@ public class Gamelogic : MonoBehaviour
     }
 
     private float waitforEnd;
-    private float end = 20;
+    private float end = 10;
     private bool waitingForEnd = false;
 
     void Awake()

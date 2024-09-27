@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     public GameObject spawnPoint;
     public GameObject player;
     private float waitforEnd;
-    private float end = 20;
+    private float end = 10;
     private bool waitingForEnd = false;
     private bool isLoading = false; // Sicherstellen, dass die Szene nur einmal geladen wird
     private ScoreScript scoreObject;
