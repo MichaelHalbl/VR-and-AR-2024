@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using TMPro;
 
 public class HotWire : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class HotWire : MonoBehaviour
     public Transform endPoint;    // Diese müssen im Inspector zugewiesen werden
 
     private bool isLoading = false; // Sicherstellen, dass die Szene nur einmal geladen wird
+    public TextMeshProUGUI scoreText;
 
     void Awake()
     {
@@ -49,6 +51,8 @@ public class HotWire : MonoBehaviour
         {
             CheckForPoints();
         }
+
+        scoreText.text = "Failpoints: " + score;
 
         // Wenn das Spiel beendet ist und die Szene noch nicht geladen wird, wechsle die Szene
         if (hasFinished && !isLoading)

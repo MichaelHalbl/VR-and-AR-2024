@@ -27,7 +27,7 @@ public class ExitHubWorld : MonoBehaviour
     void Update()
     {
         // Überprüfe, ob der Spieler in Reichweite ist und die A-Taste drückt, und ob die Szene nicht bereits geladen wird
-        if (isInRange && !isLoading && rightHandController.IsPressed(InputHelpers.Button.PrimaryButton, out bool isPressedB, 0.1f) && isPressedB)
+        if (isInRange && !isLoading && rightHandController.IsPressed(InputHelpers.Button.SecondaryButton, out bool isPressedB, 0.1f) && isPressedB)
         {
             isLoading = true; // Verhindere, dass der Ladeprozess mehrfach gestartet wird
             StartCoroutine(LoadSceneAsync("StartWorld"));

@@ -40,7 +40,7 @@ public class SpawnStart : MonoBehaviour
             StartCoroutine(LoadSceneAsync("HubWorld"));
         }
         // Überprüfe, ob der Spieler  die B-Taste drückt, und ob die Szene nicht bereits geladen wird
-        if (!isLoading && rightHandController.IsPressed(InputHelpers.Button.PrimaryButton, out bool isPressedB, 0.1f) && isPressedB)
+        if (!isLoading && rightHandController.IsPressed(InputHelpers.Button.SecondaryButton, out bool isPressedB, 0.1f) && isPressedB)
         {
             isLoading = true; // Verhindere, dass der Ladeprozess mehrfach gestartet wird
             Application.Quit();

@@ -138,7 +138,7 @@ public class Gamelogic : MonoBehaviour
                 done = done && (spawnPoints[i].spawnCount == 0);
             }
 
-        if (score < 0)
+        if (score < -50)
             done = true;
 
         //end  game  but  wait for a bit to show the game over/level complete screen and clean up scene

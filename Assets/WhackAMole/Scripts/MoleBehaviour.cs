@@ -12,10 +12,12 @@ public class MoleBehaviour : MonoBehaviour
      private ScoreManager scoreManager;
      private ScoreTextManager scoreTextManager;
      private AudioSource audioSource;
+     private ScoreScript scoreObject;
 
     void Start()
     { 
        
+        scoreObject = GameObject.Find("ScoreObject").GetComponent<ScoreScript>();
         moleCollider = GetComponent<Collider>();
         moleCollider.enabled = false;
 
@@ -72,9 +74,14 @@ public class MoleBehaviour : MonoBehaviour
 
         if (hitPoints <= 0)
         {
-    
+            
             moleCollider.enabled = false;
             StartCoroutine(DestroyAfterAudio(gameObject, audioSource.clip.length));
+
+            if(molePoints<0) {
+                scoreObject.redMoles++;
+                return;
+            }
 
             //StartCoroutine(DestroyAfterSeconds(gameObject, 0.2f));
             scoreManager.changeScore(molePoints);

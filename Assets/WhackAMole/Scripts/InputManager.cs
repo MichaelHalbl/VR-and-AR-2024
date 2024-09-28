@@ -48,6 +48,8 @@ public class InputManager : MonoBehaviour
                 scoreObject.MoleHighscore = score;
             }
 
+            scoreObject.redMoles = 0;
+
             // Starte den asynchronen Szenenwechsel
             StartCoroutine(LoadHubWorldSceneAsync());
         }

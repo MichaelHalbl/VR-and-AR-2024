@@ -61,7 +61,7 @@ public class Holebehaviour : MonoBehaviour
     public bool IsGameOver()
     {
         // Game over condition: score is negative or exceeds 300
-        return scoreManager.getScore() <= -1 || scoreManager.getScore() >= maxPoints;
+        return scoreObject.redMoles >= 3 || scoreManager.getScore() >= maxPoints;
     }
    
 }
