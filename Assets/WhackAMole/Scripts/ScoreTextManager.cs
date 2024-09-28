@@ -19,17 +19,17 @@ public class ScoreTextManager : MonoBehaviour
     }
    public void UpdateScoreText(int score)
     {
-        if(score < -1){
+        if(scoreObject.redMoles >= 3){
             scoreText.text = "Score: " + score + "\nGameOver";
         }
         else if(score < maxPoints/3){
-            scoreText.text = "Score: " + score;
+            scoreText.text = "Score: " + score + "\nFails: " + scoreObject.redMoles;
         }
         else if(score < (maxPoints/3)*2){
-           scoreText.text = "Score: " + score;
+           scoreText.text = "Score: " + score + "\nFails: " + scoreObject.redMoles;
         }
         else if (score < maxPoints){
-            scoreText.text = "Score: " + score;
+            scoreText.text = "Score: " + score + "\nFails: " + scoreObject.redMoles;
         } else {
             scoreText.text = "Score: " + score + "\nYOU WON";
         }
