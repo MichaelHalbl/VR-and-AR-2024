@@ -6807,7 +6807,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2955191853808540506, guid: f2d4c4c773cf27c4d9378904dd79db1f, type: 3}
       propertyPath: m_Volume
-      value: 0.509
+      value: 0.352
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955191853808540506, guid: f2d4c4c773cf27c4d9378904dd79db1f, type: 3}
+      propertyPath: MaxDistance
+      value: 14.56
       objectReference: {fileID: 0}
     - target: {fileID: 2967826628288147486, guid: f2d4c4c773cf27c4d9378904dd79db1f, type: 3}
       propertyPath: m_StaticEditorFlags
