@@ -60,7 +60,7 @@ public class HotWire : MonoBehaviour
             isLoading = true; // Verhindere mehrfaches Laden der Szene
 
             // Aktualisiere den Highscore, falls der aktuelle Score höher ist
-            if (score > scoreObject.DrahtHighscore)
+            if (score < scoreObject.DrahtHighscore)
             {
                 scoreObject.DrahtHighscore = score;
             }
